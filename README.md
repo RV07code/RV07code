@@ -1,245 +1,187 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZERO-X // 3D Core Profile</title>
-    <style>
-        :root {
-            --bg-color: #030303;
-            --text-color: #ffffff;
-            --accent-color: #999999;
-            --border-color: #222222;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: var(--bg-color);
-            font-family: 'Courier New', Courier, monospace;
-            color: var(--text-color);
-        }
-
-        #canvas3d {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            width: 80vw;
-            max-width: 600px;
-            background: rgba(0, 0, 0, 0.75);
-            border: 1px solid var(--border-color);
-            padding: 40px;
-            box-shadow: 0 0 60px rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 6px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            letter-spacing: 6px;
-            font-weight: 300;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .header p {
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            letter-spacing: 3px;
-        }
-
-        .content {
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 25px 0;
-            margin-bottom: 30px;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-
-        .content-line {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .content-line span:first-child {
-            color: var(--accent-color);
-        }
-
-        .skills {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .badge {
-            font-size: 0.75rem;
-            padding: 6px 12px;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            background: rgba(255, 255, 255, 0.05);
-            text-decoration: none;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .badge:hover {
-            background: #ffffff;
-            color: #000000;
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--accent-color);
-        }
-
-        .footer a {
-            color: var(--text-color);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--text-color);
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-</head>
-<body>
-    <canvas id="canvas3d"></canvas>
-    
-    <div class="container">
-        <div class="header">
-            <h1>ZERO-X</h1>
-            <p>// Core Profile Architecture</p>
-        </div>
-        
-        <div class="content">
-            <div class="content-line">
-                <span>SYSTEM</span>
-                <span>ONLINE</span>
-            </div>
-            <div class="content-line">
-                <span>ROLE</span>
-                <span>ARCHITECT / GRAPHICS ENGINEER</span>
-            </div>
-            <div class="content-line">
-                <span>STATUS</span>
-                <span>COMPUTING 3D STRUCTURES</span>
-            </div>
-        </div>
-
-        <div class="skills">
-            <a href="#" class="badge">RUST</a>
-            <a href="#" class="badge">WEBGL</a>
-            <a href="#" class="badge">THREE.JS</a>
-            <a href="#" class="badge">TYPESCRIPT</a>
-        </div>
-
-        <div class="footer">
-            <p>Designed with minimalism in mind. <a href="https://github.com" target="_blank">GITHUB</a></p>
-        </div>
-    </div>
-
-    <script>
-        // 3D Background with Three.js
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas3d'), alpha: true });
-        
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-
-        // Create stars/particles
-        const geometry = new THREE.BufferGeometry();
-        const count = 1500;
-        const positions = new Float32Array(count * 3);
-
-        for(let i = 0; i < count * 3; i++) {
-            positions[i] = (Math.random() - 0.5) * 10;
-        }
-
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-        const material = new THREE.PointsMaterial({
-            color: 0xffffff,
-            size: 0.02,
-            transparent: true,
-            opacity: 0.5
-        });
-
-        const particles = new THREE.Points(geometry, material);
-        scene.add(particles);
-
-        // Add some glowing wireframe shapes (3D element)
-        const geometry2 = new THREE.IcosahedronGeometry(2, 1);
-        const material2 = new THREE.MeshBasicMaterial({
-            color: 0xffffff,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.15
-        });
-        const icosahedron = new THREE.Mesh(geometry2, material2);
-        scene.add(icosahedron);
-
-        camera.position.z = 5;
-
-        // Mouse interaction
-        let mouseX = 0;
-        let mouseY = 0;
-        document.addEventListener('mousemove', (event) => {
-            mouseX = (event.clientX / window.innerWidth) - 0.5;
-            mouseY = (event.clientY / window.innerHeight) - 0.5;
-        });
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-
-            particles.rotation.y += 0.0002;
-            particles.rotation.x += 0.0001;
-
-            icosahedron.rotation.y += 0.005;
-            icosahedron.rotation.x -= 0.002;
-
-            // Camera movement
-            camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
-            camera.position.y += (-mouseY * 2 - camera.position.y) * 0.05;
-            camera.lookAt(scene.position);
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Handle resize
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
-</body>
-</html>
+<div align="center">
+<!-- 
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  N E G A T I V E   S P A C E                                 ║
+  ║  Profile by [Your Name]                                        ║
+  ╚══════════════════════════════════════════════════════════════╝
+<!-- ASCII Name Block -->
+<pre>
+███╗   ███╗██╗   ██╗███████╗████████╗ █████╗ ████████╗██╗   ██╗███████╗
+████╗ ████║██║   ██║██╔════╝╚══██╔══╝██╔══██╗╚══██╔══╝██║   ██║██╔════╝
+██╔████╔██║██║   ██║███████╗   ██║   ███████║   ██║   ██║   ██║███████╗
+██║╚██╔╝██║██║   ██║╚════██║   ██║   ██╔══██║   ██║   ██║   ██║╚════██║
+██║ ╚═╝ ██║╚██████╔╝███████║   ██║   ██║  ██║   ██║   ╚██████╔╝███████║
+╚═╝     ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚══════╝
+<br>
+<!-- Minimalist Divider -->
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:000000,100:000000&height=1&width=800" />
+<br>
+<!-- Philosophy Quote -->
+<blockquote>
+<p align="center">
+  <em>"Perfection is achieved not when there is nothing more to add,<br>but when there is nothing left to take away."</em><br>
+  <sub>— Antoine de Saint-Exupéry</sub>
+</p>
+</blockquote>
+<br>
+<!-- Role Definition -->
+<p align="center">
+  <samp>
+    SOFTWARE ARCHITECT  ·  SYSTEMS DESIGNER  ·  MINIMALIST
+  </samp>
+</p>
+<br>
+<!-- Geometric Separator -->
+<p align="center">
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+</p>
+</div>
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--  S T A T I S T I C S   S E C T I O N                            -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<br>
+<details>
+<summary>
+  <samp><b>◈  D A T A   M E T R I C S</b></samp>
+</summary>
+<br>
+<div align="center">
+<!-- GitHub Stats with monochrome theme -->
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=graywhite&hide_border=true&bg_color=00000000&title_color=000000&text_color=333333&icon_color=000000&rank_icon=default" />
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=graywhite&hide_border=true&bg_color=00000000&title_color=000000&text_color=333333" />
+<br><br>
+<!-- Streak Stats -->
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_USERNAME&theme=white&hide_border=true&background=00000000&stroke=000000&ring=000000&fire=333333&currStreakNum=000000&sideNums=333333&currStreakLabel=000000&sideLabels=333333" />
+<br><br>
+<!-- Activity Graph -->
+<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_USERNAME&bg_color=ffffff&color=000000&line=000000&point=333333&area=true&hide_border=true" />
+</div>
+</details>
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--  T E C H N O L O G Y   S T A C K                              -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<br>
+<details>
+<summary>
+  <samp><b>◈  T E C H N O L O G Y   S T A C K</b></samp>
+</summary>
+<br>
+<div align="center">
+<!-- Languages & Tools in monochrome badges -->
+<p>
+  <img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white" />
+  <img src="https://img.shields.io/badge/Go-000000?style=flat-square&logo=go&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-000000?style=flat-square&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-000000?style=flat-square&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/C-000000?style=flat-square&logo=c&logoColor=white" />
+</p>
+<p>
+  <img src="https://img.shields.io/badge/PostgreSQL-000000?style=flat-square&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Redis-000000?style=flat-square&logo=redis&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-000000?style=flat-square&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/Kubernetes-000000?style=flat-square&logo=kubernetes&logoColor=white" />
+</p>
+<p>
+  <img src="https://img.shields.io/badge/Neovim-000000?style=flat-square&logo=neovim&logoColor=white" />
+  <img src="https://img.shields.io/badge/Arch-000000?style=flat-square&logo=arch-linux&logoColor=white" />
+  <img src="https://img.shields.io/badge/Git-000000?style=flat-square&logo=git&logoColor=white" />
+</p>
+</div>
+</details>
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--  P R O J E C T S                                                -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<br>
+<details>
+<summary>
+  <samp><b>◈  S E L E C T E D   W O R K S</b></samp>
+</summary>
+<br>
+<div align="center">
+<!-- Project Cards -->
+<table>
+<tr>
+<td width="50%">
+`[001]`   Project Alpha
+```
+High-performance distributed systems framework.
+Designed for fault tolerance at scale.
+```
+`Rust` `gRPC` `Raft Consensus`
+</td>
+<td width="50%">
+`[002]`   Project Beta
+```
+Zero-allocation data pipeline for real-time analytics.
+Sub-microsecond latency guarantees.
+```
+`C` `eBPF` `Linux Kernel`
+</td>
+</tr>
+<tr>
+<td width="50%">
+`[003]`   Project Gamma
+```
+Declarative infrastructure orchestration tool.
+Infrastructure as pure function.
+```
+`Go` `WebAssembly` `Nix`
+</td>
+<td width="50%">
+`[004]`   Project Delta
+```
+Experimental compiler for a linearly-typed language.
+Memory safety without garbage collection.
+```
+`OCaml` `LLVM` `Type Theory`
+</td>
+</tr>
+</table>
+</div>
+</details>
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--  P H I L O S O P H Y                                            -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<br>
+<div align="center">
+<p>
+  <samp>
+    ┌─────────────────────────────────────────┐<br>
+    │  <b>D E S I G N   P R I N C I P L E S</b>  │<br>
+    ├─────────────────────────────────────────┤<br>
+    │  01. Clarity over cleverness            │<br>
+    │  02. Explicit over implicit               │<br>
+    │  03. Composition over inheritance        │<br>
+    │  04. Stability over features             │<br>
+    │  05. Silence over noise                  │<br>
+    └─────────────────────────────────────────┘
+  </samp>
+</p>
+</div>
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--  C O N T A C T                                                  -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<br>
+<div align="center">
+<p>
+  <samp>
+    <a href="mailto:your@email.com">E M A I L</a> &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="https://your-website.com">W E B S I T E</a> &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="https://linkedin.com/in/yourprofile">L I N K E D I N</a>
+  </samp>
+</p>
+<br>
+<!-- Footer ASCII -->
+<pre>
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║   "The code is the design. The design is the code."           ║
+║                                                               ║
+║   [Your Name] · [Current Year] · All thoughts reserved         ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+</div>
+<!-- Profile Views Counter (hidden minimal) -->
+<div align="center">
+  <img src="https://komarev.com/ghpvc/?username=YOUR_USERNAME&color=000000&style=flat-square&label=Views" />
+</div>
