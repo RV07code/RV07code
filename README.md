@@ -3,185 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZERO-X // Core Profile</title>
+    <title>ZERO-X // 3D Core Profile</title>
     <style>
         :root {
-            --bg-color: #050505;
+            --bg-color: #030303;
             --text-color: #ffffff;
-            --border-color: #333333;
-            --accent-color: #aaaaaa;
-            --font-family: 'Courier New', Courier, monospace;
+            --accent-color: #999999;
+            --border-color: #222222;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-family);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            perspective: 1000px;
+        body, html {
+            width: 100%;
+            height: 100%;
             overflow: hidden;
+            background-color: var(--bg-color);
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-color);
         }
 
-        .card {
-            background: #000000;
+        #canvas3d {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80vw;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.75);
             border: 1px solid var(--border-color);
             padding: 40px;
-            width: 800px;
-            max-width: 90%;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-            transform-style: preserve-3d;
-            animation: float 6s ease-in-out infinite alternate;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px) rotateX(2deg) rotateY(-2deg);
-            }
-            100% {
-                transform: translateY(-10px) rotateX(-2deg) rotateY(2deg);
-            }
+            box-shadow: 0 0 60px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 6px;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .header h1 {
             font-size: 2.5rem;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             font-weight: 300;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
         .header p {
-            color: var(--accent-color);
             font-size: 0.9rem;
-            letter-spacing: 2px;
+            color: var(--accent-color);
+            letter-spacing: 3px;
         }
 
-        .terminal {
+        .content {
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
-            padding: 20px 0;
-            margin-bottom: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            padding: 25px 0;
+            margin-bottom: 30px;
+            line-height: 1.8;
             font-size: 0.95rem;
         }
 
-        .terminal-line {
+        .content-line {
             display: flex;
-            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
         }
 
-        .prompt {
+        .content-line span:first-child {
             color: var(--accent-color);
-            margin-right: 10px;
-        }
-
-        .command {
-            animation: typing 2s steps(40, end) infinite;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 100%;
-            border-right: 1px solid #fff;
-        }
-
-        @keyframes typing {
-            0% { width: 0; }
-            50% { width: 100%; }
-            100% { width: 100%; }
-        }
-
-        .section-title {
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-            text-transform: uppercase;
         }
 
         .skills {
             display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
+            justify-content: center;
+            gap: 12px;
             flex-wrap: wrap;
+            margin-bottom: 30px;
         }
 
         .badge {
+            font-size: 0.75rem;
+            padding: 6px 12px;
             border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            background: #000;
-            color: #fff;
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.05);
             text-decoration: none;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
         }
 
         .badge:hover {
-            background: #fff;
-            color: #000;
+            background: #ffffff;
+            color: #000000;
         }
 
         .footer {
             text-align: center;
             font-size: 0.8rem;
             color: var(--accent-color);
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
         }
 
         .footer a {
-            color: #fff;
+            color: var(--text-color);
             text-decoration: none;
-            border-bottom: 1px dotted #fff;
+            border-bottom: 1px dotted var(--text-color);
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <div class="card">
+    <canvas id="canvas3d"></canvas>
+    
+    <div class="container">
         <div class="header">
             <h1>ZERO-X</h1>
-            <p>// The Core Profile</p>
+            <p>// Core Profile Architecture</p>
         </div>
         
-        <div class="terminal">
-            <div class="terminal-line">
-                <span class="prompt">root@zero-x:~#</span>
-                <span class="command">./init_profile.sh</span>
+        <div class="content">
+            <div class="content-line">
+                <span>SYSTEM</span>
+                <span>ONLINE</span>
             </div>
-            <div class="terminal-line">
-                <span class="prompt">[INFO]</span>
-                <span>System online. Architecting minimal software structures.</span>
+            <div class="content-line">
+                <span>ROLE</span>
+                <span>ARCHITECT / GRAPHICS ENGINEER</span>
+            </div>
+            <div class="content-line">
+                <span>STATUS</span>
+                <span>COMPUTING 3D STRUCTURES</span>
             </div>
         </div>
 
-        <div class="section-title">// Skill Matrix</div>
         <div class="skills">
-            <span class="badge">RUST</span>
-            <span class="badge">TYPESCRIPT</span>
-            <span class="badge">WEBGL</span>
-            <span class="badge">THREE.JS</span>
-            <span class="badge">LINUX</span>
+            <a href="#" class="badge">RUST</a>
+            <a href="#" class="badge">WEBGL</a>
+            <a href="#" class="badge">THREE.JS</a>
+            <a href="#" class="badge">TYPESCRIPT</a>
         </div>
 
         <div class="footer">
-            <p>Designed with minimalism in mind. <a href="https://github.com" target="_blank">GitHub</a></p>
+            <p>Designed with minimalism in mind. <a href="https://github.com" target="_blank">GITHUB</a></p>
         </div>
     </div>
+
+    <script>
+        // 3D Background with Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas3d'), alpha: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        // Create stars/particles
+        const geometry = new THREE.BufferGeometry();
+        const count = 1500;
+        const positions = new Float32Array(count * 3);
+
+        for(let i = 0; i < count * 3; i++) {
+            positions[i] = (Math.random() - 0.5) * 10;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+        const material = new THREE.PointsMaterial({
+            color: 0xffffff,
+            size: 0.02,
+            transparent: true,
+            opacity: 0.5
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        // Add some glowing wireframe shapes (3D element)
+        const geometry2 = new THREE.IcosahedronGeometry(2, 1);
+        const material2 = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.15
+        });
+        const icosahedron = new THREE.Mesh(geometry2, material2);
+        scene.add(icosahedron);
+
+        camera.position.z = 5;
+
+        // Mouse interaction
+        let mouseX = 0;
+        let mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) - 0.5;
+            mouseY = (event.clientY / window.innerHeight) - 0.5;
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+
+            particles.rotation.y += 0.0002;
+            particles.rotation.x += 0.0001;
+
+            icosahedron.rotation.y += 0.005;
+            icosahedron.rotation.x -= 0.002;
+
+            // Camera movement
+            camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY * 2 - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
 </body>
 </html>
