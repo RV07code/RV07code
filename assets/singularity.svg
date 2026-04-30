@@ -127,9 +127,9 @@
   </g>
   <!-- Description -->
   <text x="665" y="232" class="sans body">
-    <tspan x="665" dy="0">在数字荒原中寻找永恒。</tspan>
-    <tspan x="665" dy="30">通过代码捕捉转瞬即逝的美学瞬间，</tspan>
-    <tspan x="665" dy="30">并将其转化为可感知的现实。</tspan>
+    <tspan x="665" dy="0">应该写点什么，</tspan>
+    <tspan x="665" dy="30">这里写什么，</tspan>
+    <tspan x="665" dy="30">写什么。</tspan>
   </text>
   <!-- Minimal CTA -->
   <g transform="translate(665 342)">
