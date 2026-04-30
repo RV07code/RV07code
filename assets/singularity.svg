@@ -1,0 +1,161 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">SINGULARITY GitHub Profile Banner</title>
+  <desc id="desc">Dark minimal GitHub profile SVG banner inspired by ephemeral substance and kinetic poetry.</desc>
+  <defs>
+    <!-- Background gradient -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#181818"/>
+      <stop offset="45%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#030303"/>
+    </radialGradient>
+    <!-- Soft white gradient for title -->
+    <linearGradient id="titleGradient" x1="80" y1="120" x2="720" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="55%" stop-color="#d8d8d8"/>
+      <stop offset="100%" stop-color="#808080"/>
+    </linearGradient>
+    <!-- Noise texture -->
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.28"/>
+      </feComponentTransfer>
+    </filter>
+    <!-- Liquid text displacement -->
+    <filter id="liquid">
+      <feTurbulence type="fractalNoise" baseFrequency="0.008 0.02" numOctaves="2" result="noise">
+        <animate attributeName="baseFrequency" values="0.006 0.016;0.012 0.025;0.006 0.016" dur="8s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G">
+        <animate attributeName="scale" values="0;5;2;0" dur="7s" repeatCount="indefinite"/>
+      </feDisplacementMap>
+    </filter>
+    <!-- Thin glow -->
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .sans {
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+      .serif {
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      }
+      .meta {
+        fill: rgba(255,255,255,0.42);
+        font-size: 13px;
+        letter-spacing: 4px;
+        font-weight: 400;
+      }
+      .tiny {
+        fill: rgba(255,255,255,0.34);
+        font-size: 11px;
+        letter-spacing: 3px;
+      }
+      .titleText {
+        fill: url(#titleGradient);
+        font-size: 104px;
+        font-weight: 300;
+        letter-spacing: -5px;
+      }
+      .italic {
+        font-style: italic;
+      }
+      .body {
+        fill: rgba(255,255,255,0.58);
+        font-size: 16px;
+        font-weight: 300;
+        letter-spacing: 0.4px;
+      }
+      .cardTitle {
+        fill: rgba(255,255,255,0.88);
+        font-size: 22px;
+        font-weight: 300;
+        letter-spacing: -0.5px;
+      }
+      .cardText {
+        fill: rgba(255,255,255,0.45);
+        font-size: 13px;
+        font-weight: 300;
+      }
+      .strokeSoft {
+        stroke: rgba(255,255,255,0.13);
+      }
+      .strokeBright {
+        stroke: rgba(255,255,255,0.82);
+      }
+      .fadeLine {
+        opacity: 0.3;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 0.85; }
+      }
+      .pulse {
+        animation: pulse 3.5s ease-in-out infinite;
+      }
+    </style>
+  </defs>
+  <!-- Base -->
+  <rect width="1200" height="520" fill="#050505"/>
+  <rect width="1200" height="520" fill="url(#bgGlow)"/>
+  <!-- Grain overlay -->
+  <rect width="1200" height="520" filter="url(#grain)" opacity="0.45"/>
+  <!-- Decorative grid / lines -->
+  <line x1="64" y1="64" x2="64" y2="456" class="strokeSoft"/>
+  <line x1="1136" y1="64" x2="1136" y2="456" class="strokeSoft"/>
+  <line x1="64" y1="456" x2="1136" y2="456" class="strokeSoft"/>
+  <line x1="64" y1="98" x2="370" y2="98" class="strokeSoft fadeLine"/>
+  <line x1="830" y1="98" x2="1136" y2="98" class="strokeSoft fadeLine"/>
+  <!-- Progress bar left -->
+  <line x1="34" y1="160" x2="34" y2="360" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <line x1="34" y1="160" x2="34" y2="245" class="strokeBright pulse" stroke-width="1"/>
+  <!-- Top meta -->
+  <text x="80" y="88" class="sans meta">SINGULARITY // PROFILE</text>
+  <text x="895" y="88" class="sans tiny">EPHEMERAL · KINETIC · ZERO</text>
+  <!-- Main index -->
+  <text x="80" y="150" class="sans meta">01 / ARCHIVE</text>
+  <!-- Main title -->
+  <g filter="url(#liquid)">
+    <text x="76" y="250" class="serif titleText">Ephemeral</text>
+    <text x="82" y="345" class="serif titleText italic">Substance</text>
+  </g>
+  <!-- Description -->
+  <text x="665" y="232" class="sans body">
+    <tspan x="665" dy="0">在数字荒原中寻找永恒。</tspan>
+    <tspan x="665" dy="30">通过代码捕捉转瞬即逝的美学瞬间，</tspan>
+    <tspan x="665" dy="30">并将其转化为可感知的现实。</tspan>
+  </text>
+  <!-- Minimal CTA -->
+  <g transform="translate(665 342)">
+    <text x="0" y="0" class="sans meta" font-size="12">EXPLORE</text>
+    <line x1="0" y1="20" x2="92" y2="20" stroke="rgba(255,255,255,0.34)" stroke-width="1"/>
+  </g>
+  <!-- Bottom cards -->
+  <g transform="translate(80 394)">
+    <text x="0" y="0" class="sans tiny">02 / THEORY</text>
+    <text x="0" y="36" class="serif cardTitle">Kinetic Poetry</text>
+    <text x="0" y="64" class="sans cardText">Motion is not displacement, but the soul of interface.</text>
+  </g>
+  <g transform="translate(520 394)">
+    <text x="0" y="0" class="sans tiny">03 / VISION</text>
+    <text x="0" y="36" class="serif cardTitle">Absolute Zero</text>
+    <text x="0" y="64" class="sans cardText">Minimalism is not absence, but perfect balance.</text>
+  </g>
+  <g transform="translate(940 394)">
+    <circle cx="0" cy="20" r="34" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+    <circle cx="0" cy="20" r="4" fill="rgba(255,255,255,0.9)" filter="url(#softGlow)">
+      <animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <text x="58" y="16" class="sans tiny">STATUS</text>
+    <text x="58" y="42" class="sans cardText">ONLINE / BUILDING</text>
+  </g>
+  <!-- Bottom signature -->
+  <text x="80" y="486" class="sans tiny">CODE · DESIGN · SYSTEM · AESTHETICS</text>
+  <text x="958" y="486" class="sans tiny">GITHUB README SVG</text>
+</svg>
