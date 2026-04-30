@@ -1,937 +1,335 @@
 <div align="center">
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  T Y P O G R A P H I C   B R U T A L I S M                        -->
-<!--  Pure HTML/CSS. Maximum density. No markdown weakness.             -->
+<!--  G I T H U B   P R O F I L E   V4                                 -->
+<!--  Zero custom CSS. Pure HTML tables + ASCII + SVG.                 -->
+<!--  Tested against GitHub's HTML sanitizer.                          -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@300;400;600;900&display=swap');
-
-  .brutal-container {
-    font-family: 'Inter', -apple-system, sans-serif;
-    max-width: 900px;
-    margin: 0 auto;
-    color: #000;
-    line-height: 1.4;
-  }
-
-  .brutal-header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 40px;
-    align-items: end;
-    border-bottom: 3px solid #000;
-    padding-bottom: 30px;
-    margin-bottom: 40px;
-  }
-
-  .brutal-name {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 48px;
-    font-weight: 800;
-    letter-spacing: -2px;
-    line-height: 1;
-    margin: 0;
-  }
-
-  .brutal-name span {
-    display: block;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 4px;
-    margin-top: 10px;
-    color: #666;
-  }
-
-  .brutal-status {
-    text-align: right;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-  }
-
-  .brutal-status .indicator {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background: #000;
-    border-radius: 50%;
-    margin-right: 6px;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  .brutal-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
-    margin-bottom: 40px;
-  }
-
-  .brutal-card {
-    border: 2px solid #000;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .brutal-card::before {
-    content: attr(data-index);
-    position: absolute;
-    top: -10px;
-    right: 15px;
-    background: #fff;
-    padding: 0 5px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 700;
-  }
-
-  .brutal-card.inverted {
-    background: #000;
-    color: #fff;
-  }
-
-  .brutal-card.inverted::before {
-    background: #000;
-    color: #fff;
-  }
-
-  .brutal-card.col-6 { grid-column: span 6; }
-  .brutal-card.col-4 { grid-column: span 4; }
-  .brutal-card.col-8 { grid-column: span 8; }
-  .brutal-card.col-12 { grid-column: span 12; }
-
-  .brutal-card h3 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin: 0 0 15px 0;
-    text-transform: uppercase;
-  }
-
-  .brutal-metric {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid #ddd;
-    padding: 8px 0;
-    font-size: 13px;
-  }
-
-  .brutal-metric:last-child { border-bottom: none; }
-
-  .brutal-metric .label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .brutal-metric .value {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    font-size: 16px;
-  }
-
-  .brutal-bar {
-    height: 3px;
-    background: #eee;
-    margin-top: 5px;
-    position: relative;
-  }
-
-  .brutal-bar::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: #000;
-    width: var(--fill);
-  }
-
-  .brutal-card.inverted .brutal-bar {
-    background: #333;
-  }
-
-  .brutal-card.inverted .brutal-bar::after {
-    background: #fff;
-  }
-
-  .skill-matrix {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-
-  .skill-item {
-    border: 1px solid #000;
-    padding: 8px 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.2s;
-  }
-
-  .skill-item:hover {
-    background: #000;
-    color: #fff;
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 #000;
-  }
-
-  .skill-level {
-    font-size: 9px;
-    color: #999;
-  }
-
-  .project-card {
-    position: relative;
-    padding-left: 20px;
-    border-left: 3px solid #000;
-  }
-
-  .project-card h4 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 18px;
-    font-weight: 800;
-    margin: 0 0 10px 0;
-    letter-spacing: -1px;
-  }
-
-  .project-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #666;
-    margin-bottom: 10px;
-  }
-
-  .project-desc {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #333;
-    margin-bottom: 15px;
-  }
-
-  .project-stats {
-    display: flex;
-    gap: 15px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-  }
-
-  .project-stats span {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .heatmap {
-    display: grid;
-    grid-template-columns: repeat(52, 1fr);
-    gap: 2px;
-    height: 60px;
-  }
-
-  .heat-cell {
-    background: #eee;
-    border-radius: 1px;
-  }
-
-  .heat-cell.active { background: #000; }
-  .heat-cell.medium { background: #666; }
-  .heat-cell.light { background: #bbb; }
-
-  .brutal-footer {
-    border-top: 3px solid #000;
-    margin-top: 40px;
-    padding-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #666;
-  }
-
-  .contact-strip {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-  }
-
-  .contact-strip a {
-    color: #000;
-    text-decoration: none;
-    border-bottom: 2px solid #000;
-    padding-bottom: 2px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    font-weight: 700;
-    transition: all 0.2s;
-  }
-
-  .contact-strip a:hover {
-    background: #000;
-    color: #fff;
-    padding: 2px 6px;
-    border-bottom: 2px solid #000;
-  }
-
-  .tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .tag {
-    border: 1px solid #000;
-    padding: 4px 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-  }
-
-  .tag.primary {
-    background: #000;
-    color: #fff;
-  }
-
-  .timeline {
-    position: relative;
-    padding-left: 20px;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #000;
-  }
-
-  .timeline-item {
-    position: relative;
-    padding-bottom: 20px;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -24px;
-    top: 2px;
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    border: 2px solid #000;
-    border-radius: 50%;
-  }
-
-  .timeline-item.active::before {
-    background: #000;
-  }
-
-  .timeline-date {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #666;
-    margin-bottom: 4px;
-  }
-
-  .timeline-content {
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .ascii-art {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    line-height: 1.2;
-    color: #000;
-    white-space: pre;
-    overflow-x: auto;
-  }
-
-  .brutal-divider {
-    height: 2px;
-    background: repeating-linear-gradient(
-      90deg,
-      #000 0px,
-      #000 10px,
-      transparent 10px,
-      transparent 15px
-    );
-    margin: 30px 0;
-  }
-<div class="brutal-container">
-  <!-- HEADER -->
-<div class="brutal-header">
-    <div>
-      <div class="brutal-name">
-        YOUR NAME
-        <span>SYSTEMS ARCHITECT & PERFORMANCE ENGINEER</span>
-      </div>
-    </div>
-    <div class="brutal-status">
-      <span class="indicator"></span>ONLINE<br>
-      UTC+8 · AVAILABLE FOR CONTRACT
-    </div>
-  </div>
-  <!-- MAIN GRID -->
-<div class="brutal-grid">
-    <!-- LEFT: Core Metrics -->
-    <div class="brutal-card col-4" data-index="01">
-      <h3>Core Metrics</h3>
-      <div class="brutal-metric">
-        <span class="label">Commits</span>
-        <span class="value">2,847</span>
-      </div>
-      <div class="brutal-bar" style="--fill: 78%"></div>
-
-      <div class="brutal-metric">
-        <span class="label">Pull Requests</span>
-        <span class="value">1,203</span>
-      </div>
-      <div class="brutal-bar" style="--fill: 65%"></div>
-
-      <div class="brutal-metric">
-        <span class="label">Code Reviews</span>
-        <span class="value">3,561</span>
-      </div>
-      <div class="brutal-bar" style="--fill: 92%"></div>
-
-      <div class="brutal-metric">
-        <span class="label">Issues Closed</span>
-        <span class="value">892</span>
-      </div>
-      <div class="brutal-bar" style="--fill: 45%"></div>
-
-      <div class="brutal-metric">
-        <span class="label">Stars Earned</span>
-        <span class="value">4.2k</span>
-      </div>
-      <div class="brutal-bar" style="--fill: 60%"></div>
-    </div>
-
-    <!-- CENTER: Activity Heatmap -->
-    <div class="brutal-card inverted col-8" data-index="02">
-      <h3>Contribution Topology</h3>
-      <div class="heatmap">
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell "></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell medium"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell active"></div>
-<div class="heat-cell light"></div>
-<div class="heat-cell medium"></div>
-      </div>
-      <div style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 9px; display: flex; justify-content: space-between; color: #666;">
-        <span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span><span>MAY</span><span>JUN</span>
-        <span>JUL</span><span>AUG</span><span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span>
-      </div>
-    </div>
-    <!-- ROW 2: Skills -->
-    <div class="brutal-card inverted col-6" data-index="03">
-      <h3>Language Arsenal</h3>
-      <div class="skill-matrix">
-        <div class="skill-item">Rust<span class="skill-level">PROD</span></div>
-        <div class="skill-item">Go<span class="skill-level">PROD</span></div>
-        <div class="skill-item">TypeScript<span class="skill-level">PROD</span></div>
-        <div class="skill-item">C/C++<span class="skill-level">SYS</span></div>
-        <div class="skill-item">Zig<span class="skill-level">EXP</span></div>
-        <div class="skill-item">OCaml<span class="skill-level">EXP</span></div>
-        <div class="skill-item">Python<span class="skill-level">AUTO</span></div>
-        <div class="skill-item">SQL<span class="skill-level">PROD</span></div>
-        <div class="skill-item">WASM<span class="skill-level">EXP</span></div>
-      </div>
-    </div>
-
-    <div class="brutal-card col-6" data-index="04">
-      <h3>Infrastructure & Tools</h3>
-      <div class="skill-matrix">
-        <div class="skill-item">Kubernetes<span class="skill-level">PROD</span></div>
-        <div class="skill-item">Docker<span class="skill-level">PROD</span></div>
-        <div class="skill-item">PostgreSQL<span class="skill-level">PROD</span></div>
-        <div class="skill-item">Redis<span class="skill-level">PROD</span></div>
-        <div class="skill-item">Kafka<span class="skill-level">PROD</span></div>
-        <div class="skill-item">eBPF<span class="skill-level">EXP</span></div>
-        <div class="skill-item">Nix<span class="skill-level">EXP</span></div>
-        <div class="skill-item">Terraform<span class="skill-level">AUTO</span></div>
-        <div class="skill-item">Git<span class="skill-level">PROD</span></div>
-      </div>
-    </div>
-
-    <!-- ROW 3: Projects -->
-    <div class="brutal-card col-6" data-index="05">
-      <div class="project-card">
-        <h4>NEXUS</h4>
-        <div class="project-meta">v2.1.0 · MIT LICENSE · UPDATED 2 DAYS AGO</div>
-        <div class="project-desc">
-          Distributed consensus engine with zero-config clustering. 
-          Sub-10ms leader election. Automatic rebalancing across failure domains.
-        </div>
-        <div class="project-stats">
-          <span>★ 1,247</span>
-          <span>⑃ 89</span>
-          <span>◎ 12</span>
-          <span>Rust 98%</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="brutal-card inverted col-6" data-index="06">
-      <div class="project-card" style="border-left-color: #fff;">
-        <h4>VOID</h4>
-        <div class="project-meta" style="color: #999;">v0.9.4 · GPL-3.0 · UPDATED 6 HOURS AGO</div>
-        <div class="project-desc" style="color: #ccc;">
-          Zero-allocation data pipeline for real-time analytics. 
-          Lock-free queues. NUMA-aware scheduling. Sub-microsecond latency.
-        </div>
-        <div class="project-stats" style="color: #ccc;">
-          <span>★ 892</span>
-          <span>⑃ 45</span>
-          <span>◎ 8</span>
-          <span>C 88%</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="brutal-card inverted col-6" data-index="07">
-      <div class="project-card" style="border-left-color: #fff;">
-        <h4>SPECTRE</h4>
-        <div class="project-meta" style="color: #999;">v1.4.2 · APACHE-2.0 · UPDATED 1 WEEK AGO</div>
-        <div class="project-desc" style="color: #ccc;">
-          Declarative infrastructure orchestration. Pure function deployments. 
-          Immutable infrastructure with state drift detection.
-        </div>
-        <div class="project-stats" style="color: #ccc;">
-          <span>★ 634</span>
-          <span>⑃ 34</span>
-          <span>◎ 5</span>
-          <span>Go 82%</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="brutal-card col-6" data-index="08">
-      <div class="project-card">
-        <h4>AXIOM</h4>
-        <div class="project-meta">v0.3.1 · MIT · UPDATED 3 DAYS AGO</div>
-        <div class="project-desc">
-          Experimental compiler for linearly-typed language. 
-          Memory safety without GC. Compile-time resource management.
-        </div>
-        <div class="project-stats">
-          <span>★ 456</span>
-          <span>⑃ 23</span>
-          <span>◎ 18</span>
-          <span>OCaml 72%</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ROW 4: Timeline + ASCII -->
-    <div class="brutal-card col-4" data-index="09">
-      <h3>Chronology</h3>
-      <div class="timeline">
-        <div class="timeline-item active">
-          <div class="timeline-date">2024 — PRESENT</div>
-          <div class="timeline-content">Staff Engineer @ [Company]</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2021 — 2024</div>
-          <div class="timeline-content">Senior Engineer @ [Company]</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2019 — 2021</div>
-          <div class="timeline-content">Founding Engineer @ [Startup]</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2017 — 2019</div>
-          <div class="timeline-content">Software Engineer @ [Corp]</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2013 — 2017</div>
-          <div class="timeline-content">CS Degree @ [University]</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="brutal-card inverted col-4" data-index="10">
-      <h3>System Architecture</h3>
-      <div class="ascii-art">
+<!-- HEADER: Typing Animation + Identity Block -->
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=32&duration=2500&pause=600&color=000000&center=true&vCenter=true&width=700&lines=YOUR+NAME;SYSTEMS+ARCHITECT;PERFORMANCE+ENGINEER;DISTRIBUTED+SYSTEMS" alt="header" />
+<br><br>
+<!-- Status Strip -->
+<table><tr>
+<td><img src="https://img.shields.io/badge/●_ONLINE-000000?style=flat-square&labelColor=000000&color=FFFFFF" /></td>
+<td><img src="https://img.shields.io/badge/UTC+8-000000?style=flat-square&labelColor=FFFFFF&color=000000" /></td>
+<td><img src="https://img.shields.io/badge/AVAILABLE-000000?style=flat-square&labelColor=000000&color=FFFFFF" /></td>
+<td><img src="https://img.shields.io/badge/CONTRACT-000000?style=flat-square&labelColor=FFFFFF&color=000000" /></td>
+</tr></table>
+<br>
+<!-- ASCII IDENTITY BOX -->
+<pre>
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║   ████████╗ █████╗ ███████╗    ███████╗██╗   ██╗███████╗████████╗   ║
+║   ╚══██╔══╝██╔══██╗██╔════╝    ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝   ║
+║      ██║   ███████║█████╗      ███████╗ ╚████╔╝ ███████╗   ██║      ║
+║      ██║   ██╔══██║██╔══╝      ╚════██║  ╚██╔╝  ╚════██║   ██║      ║
+║      ██║   ██║  ██║███████╗    ███████║   ██║   ███████║   ██║      ║
+║      ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚══════╝   ╚═╝   ╚══════╝   ╚═╝      ║
+║                                                                      ║
+║   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   ║
+║                                                                      ║
+║   Building systems that outlive their builders.                      ║
+║   Zero-config clustering · Sub-10ms consensus · Lock-free queues   ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+<br>
+<!-- DASHBOARD: Metrics + Heatmap Side by Side -->
+<table width="100%">
+<tr>
+<td width="35%" valign="top">
+<!-- CORE METRICS TABLE -->
+<table width="100%" cellpadding="8" cellspacing="0" style="border:2px solid #000;">
+<tr><td colspan="2" align="center" style="border-bottom:2px solid #000; font-family:monospace; font-size:12px; font-weight:bold; letter-spacing:2px;">◈ CORE METRICS</td></tr>
+<tr>
+<td style="border-bottom:1px solid #ddd; font-family:monospace; font-size:10px; color:#666;">COMMITS</td>
+<td align="right" style="border-bottom:1px solid #ddd; font-family:monospace; font-size:16px; font-weight:bold;">2,847</td>
+</tr>
+<tr><td colspan="2" style="padding:0;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td height="3" width="78%" bgcolor="#000"></td><td height="3" width="22%" bgcolor="#eee"></td></tr></table></td></tr>
+<tr>
+<td style="border-bottom:1px solid #ddd; font-family:monospace; font-size:10px; color:#666;">PULL REQUESTS</td>
+<td align="right" style="border-bottom:1px solid #ddd; font-family:monospace; font-size:16px; font-weight:bold;">1,203</td>
+</tr>
+<tr><td colspan="2" style="padding:0;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td height="3" width="65%" bgcolor="#000"></td><td height="3" width="35%" bgcolor="#eee"></td></tr></table></td></tr>
+<tr>
+<td style="border-bottom:1px solid #ddd; font-family:monospace; font-size:10px; color:#666;">CODE REVIEWS</td>
+<td align="right" style="border-bottom:1px solid #ddd; font-family:monospace; font-size:16px; font-weight:bold;">3,561</td>
+</tr>
+<tr><td colspan="2" style="padding:0;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td height="3" width="92%" bgcolor="#000"></td><td height="3" width="8%" bgcolor="#eee"></td></tr></table></td></tr>
+<tr>
+<td style="border-bottom:1px solid #ddd; font-family:monospace; font-size:10px; color:#666;">ISSUES CLOSED</td>
+<td align="right" style="border-bottom:1px solid #ddd; font-family:monospace; font-size:16px; font-weight:bold;">892</td>
+</tr>
+<tr><td colspan="2" style="padding:0;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td height="3" width="45%" bgcolor="#000"></td><td height="3" width="55%" bgcolor="#eee"></td></tr></table></td></tr>
+<tr>
+<td style="font-family:monospace; font-size:10px; color:#666;">STARS EARNED</td>
+<td align="right" style="font-family:monospace; font-size:16px; font-weight:bold;">4.2k</td>
+</tr>
+<tr><td colspan="2" style="padding:0;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td height="3" width="60%" bgcolor="#000"></td><td height="3" width="40%" bgcolor="#eee"></td></tr></table></td></tr>
+</table>
+</td>
+<td width="65%" valign="top">
+<!-- ACTIVITY HEATMAP -->
+<table width="100%" cellpadding="8" cellspacing="0" style="border:2px solid #000; background:#000;">
+<tr><td colspan="52" align="center" style="font-family:monospace; font-size:12px; font-weight:bold; color:#fff; letter-spacing:2px;">◈ CONTRIBUTION TOPOLOGY</td></tr>
+<tr><td colspan="52" height="4"></td></tr>
+<tr><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td></tr>
+<tr><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td></tr>
+<tr><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td></tr>
+<tr><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td></tr>
+<tr><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td></tr>
+<tr><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td></tr>
+<tr><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#333333" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#FFFFFF" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#BBBBBB" style="border-radius:1px;"></td><td width="2%" height="8" bgcolor="#666666" style="border-radius:1px;"></td></tr>
+<tr><td colspan="52" height="8"></td></tr>
+<tr>
+<td colspan="52" align="center" style="font-family:monospace; font-size:9px; color:#666;">
+JAN&nbsp;&nbsp;&nbsp;FEB&nbsp;&nbsp;&nbsp;MAR&nbsp;&nbsp;&nbsp;APR&nbsp;&nbsp;&nbsp;MAY&nbsp;&nbsp;&nbsp;JUN&nbsp;&nbsp;&nbsp;JUL&nbsp;&nbsp;&nbsp;AUG&nbsp;&nbsp;&nbsp;SEP&nbsp;&nbsp;&nbsp;OCT&nbsp;&nbsp;&nbsp;NOV&nbsp;&nbsp;&nbsp;DEC
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<!-- DIVIDER -->
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td height="2" bgcolor="#000"></td></tr></table>
+<br>
+<!-- SKILLS MATRIX -->
+<table width="100%">
+<tr>
+<td width="50%" valign="top">
+<table width="100%" cellpadding="8" cellspacing="0" style="border:2px solid #000; background:#000;">
+<tr><td colspan="3" align="center" style="font-family:monospace; font-size:12px; font-weight:bold; color:#fff; letter-spacing:2px;">◈ LANGUAGE ARSENAL</td></tr>
+<tr><td colspan="3" height="4"></td></tr>
+<tr>
+<td style="border:1px solid #fff; padding:6px; font-family:monospace; font-size:11px; color:#fff;" align="center">Rust</td>
+<td style="border:1px solid #fff; padding:6px; font-family:monospace; font-size:11px; color:#fff;" align="center">Go</td>
+<td style="border:1px solid #fff; padding:6px; font-family:monospace; font-size:11px; color:#fff;" align="center">TypeScript</td>
+</tr>
+<tr>
+<td style="border:1px solid #fff; padding:6px; font-family:monospace; font-size:11px; color:#fff;" align="center">C/C++</td>
+<td style="border:1px solid #fff; padding:6px; font-family:monospace; font-size:11px; color:#fff;" align="center">Zig</td>
+<td style="border:1px solid #fff; padding:6px; font-family:monospace; font-size:11px; color:#fff;" align="center">OCaml</td>
+</tr>
+<tr>
+<td style="border:1px solid #fff; padding:6px; font-family:monospace; font-size:11px; color:#fff;" align="center">Python</td>
+<td style="border:1px solid #fff; padding:6px; font-family:monospace; font-size:11px; color:#fff;" align="center">SQL</td>
+<td style="border:1px solid #fff; padding:6px; font-family:monospace; font-size:11px; color:#fff;" align="center">WASM</td>
+</tr>
+<tr>
+<td colspan="3" height="4"></td></tr>
+<tr><td colspan="3" align="center" style="font-family:monospace; font-size:9px; color:#666;">PROD · EXP · SYS · AUTO</td></tr>
+</table>
+</td>
+<td width="50%" valign="top">
+<table width="100%" cellpadding="8" cellspacing="0" style="border:2px solid #000;">
+<tr><td colspan="3" align="center" style="border-bottom:2px solid #000; font-family:monospace; font-size:12px; font-weight:bold; letter-spacing:2px;">◈ INFRASTRUCTURE</td></tr>
+<tr><td colspan="3" height="4"></td></tr>
+<tr>
+<td style="border:1px solid #000; padding:6px; font-family:monospace; font-size:11px;" align="center">Kubernetes</td>
+<td style="border:1px solid #000; padding:6px; font-family:monospace; font-size:11px;" align="center">Docker</td>
+<td style="border:1px solid #000; padding:6px; font-family:monospace; font-size:11px;" align="center">PostgreSQL</td>
+</tr>
+<tr>
+<td style="border:1px solid #000; padding:6px; font-family:monospace; font-size:11px;" align="center">Redis</td>
+<td style="border:1px solid #000; padding:6px; font-family:monospace; font-size:11px;" align="center">Kafka</td>
+<td style="border:1px solid #000; padding:6px; font-family:monospace; font-size:11px;" align="center">eBPF</td>
+</tr>
+<tr>
+<td style="border:1px solid #000; padding:6px; font-family:monospace; font-size:11px;" align="center">Nix</td>
+<td style="border:1px solid #000; padding:6px; font-family:monospace; font-size:11px;" align="center">Terraform</td>
+<td style="border:1px solid #000; padding:6px; font-family:monospace; font-size:11px;" align="center">Git</td>
+</tr>
+<tr>
+<td colspan="3" height="4"></td></tr>
+<tr><td colspan="3" align="center" style="font-family:monospace; font-size:9px; color:#666;">ORCHESTRATION · DATABASE · KERNEL · IAC</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<!-- DIVIDER -->
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td height="2" bgcolor="#000"></td></tr></table>
+<br>
+<!-- PROJECTS: 2x2 Grid -->
+<table width="100%">
+<tr>
+<td width="50%" valign="top">
+<!-- PROJECT 1 -->
+<table width="100%" cellpadding="12" cellspacing="0" style="border:2px solid #000;">
+<tr>
+<td style="border-left:4px solid #000; padding-left:12px;">
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td style="font-family:monospace; font-size:9px; color:#666; padding-bottom:4px;">[001] v2.1.0 · MIT · UPDATED 2D AGO</td>
+</tr>
+<tr>
+<td style="font-family:monospace; font-size:20px; font-weight:bold; letter-spacing:-1px; padding-bottom:8px;">NEXUS</td>
+</tr>
+<tr>
+<td style="font-size:13px; line-height:1.6; color:#333; padding-bottom:12px;">
+Distributed consensus engine. Zero-config clustering. Sub-10ms leader election. Automatic rebalancing across failure domains.
+</td>
+</tr>
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0"><tr>
+<td style="font-family:monospace; font-size:11px; padding-right:12px;">★ 1,247</td>
+<td style="font-family:monospace; font-size:11px; padding-right:12px;">⑃ 89</td>
+<td style="font-family:monospace; font-size:11px; padding-right:12px;">◎ 12</td>
+<td style="font-family:monospace; font-size:11px;">Rust 98%</td>
+</tr></table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td width="50%" valign="top">
+<!-- PROJECT 2 -->
+<table width="100%" cellpadding="12" cellspacing="0" style="border:2px solid #000; background:#000;">
+<tr>
+<td style="border-left:4px solid #fff; padding-left:12px;">
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td style="font-family:monospace; font-size:9px; color:#999; padding-bottom:4px;">[002] v0.9.4 · GPL-3.0 · UPDATED 6H AGO</td>
+</tr>
+<tr>
+<td style="font-family:monospace; font-size:20px; font-weight:bold; color:#fff; letter-spacing:-1px; padding-bottom:8px;">VOID</td>
+</tr>
+<tr>
+<td style="font-size:13px; line-height:1.6; color:#ccc; padding-bottom:12px;">
+Zero-allocation data pipeline. Lock-free queues. NUMA-aware scheduling. Sub-microsecond latency guarantees.
+</td>
+</tr>
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0"><tr>
+<td style="font-family:monospace; font-size:11px; color:#ccc; padding-right:12px;">★ 892</td>
+<td style="font-family:monospace; font-size:11px; color:#ccc; padding-right:12px;">⑃ 45</td>
+<td style="font-family:monospace; font-size:11px; color:#ccc; padding-right:12px;">◎ 8</td>
+<td style="font-family:monospace; font-size:11px; color:#ccc;">C 88%</td>
+</tr></table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td colspan="2" height="12"></td></tr>
+<tr>
+<td width="50%" valign="top">
+<!-- PROJECT 3 -->
+<table width="100%" cellpadding="12" cellspacing="0" style="border:2px solid #000; background:#000;">
+<tr>
+<td style="border-left:4px solid #fff; padding-left:12px;">
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td style="font-family:monospace; font-size:9px; color:#999; padding-bottom:4px;">[003] v1.4.2 · APACHE-2.0 · UPDATED 1W AGO</td>
+</tr>
+<tr>
+<td style="font-family:monospace; font-size:20px; font-weight:bold; color:#fff; letter-spacing:-1px; padding-bottom:8px;">SPECTRE</td>
+</tr>
+<tr>
+<td style="font-size:13px; line-height:1.6; color:#ccc; padding-bottom:12px;">
+Declarative infrastructure orchestration. Pure function deployments. Immutable infrastructure with state drift detection.
+</td>
+</tr>
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0"><tr>
+<td style="font-family:monospace; font-size:11px; color:#ccc; padding-right:12px;">★ 634</td>
+<td style="font-family:monospace; font-size:11px; color:#ccc; padding-right:12px;">⑃ 34</td>
+<td style="font-family:monospace; font-size:11px; color:#ccc; padding-right:12px;">◎ 5</td>
+<td style="font-family:monospace; font-size:11px; color:#ccc;">Go 82%</td>
+</tr></table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td width="50%" valign="top">
+<!-- PROJECT 4 -->
+<table width="100%" cellpadding="12" cellspacing="0" style="border:2px solid #000;">
+<tr>
+<td style="border-left:4px solid #000; padding-left:12px;">
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td style="font-family:monospace; font-size:9px; color:#666; padding-bottom:4px;">[004] v0.3.1 · MIT · UPDATED 3D AGO</td>
+</tr>
+<tr>
+<td style="font-family:monospace; font-size:20px; font-weight:bold; letter-spacing:-1px; padding-bottom:8px;">AXIOM</td>
+</tr>
+<tr>
+<td style="font-size:13px; line-height:1.6; color:#333; padding-bottom:12px;">
+Experimental compiler for linearly-typed language. Memory safety without GC. Compile-time resource management. Formal verification ready.
+</td>
+</tr>
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0"><tr>
+<td style="font-family:monospace; font-size:11px; padding-right:12px;">★ 456</td>
+<td style="font-family:monospace; font-size:11px; padding-right:12px;">⑃ 23</td>
+<td style="font-family:monospace; font-size:11px; padding-right:12px;">◎ 18</td>
+<td style="font-family:monospace; font-size:11px;">OCaml 72%</td>
+</tr></table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<!-- DIVIDER -->
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td height="2" bgcolor="#000"></td></tr></table>
+<br>
+<!-- BOTTOM ROW: Timeline + ASCII + Principles -->
+<table width="100%">
+<tr>
+<td width="33%" valign="top">
+<!-- TIMELINE -->
+<table width="100%" cellpadding="8" cellspacing="0" style="border:2px solid #000;">
+<tr><td align="center" style="border-bottom:2px solid #000; font-family:monospace; font-size:12px; font-weight:bold; letter-spacing:2px;">◈ CHRONOLOGY</td></tr>
+<tr><td height="4"></td></tr>
+<tr>
+<td style="padding-left:16px; border-left:2px solid #000;">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr><td style="font-family:monospace; font-size:10px; color:#666; padding-bottom:2px;">● 2024 — PRESENT</td></tr>
+<tr><td style="font-size:13px; font-weight:600; padding-bottom:12px;">Staff Engineer @ [Company]</td></tr>
+<tr><td style="font-family:monospace; font-size:10px; color:#666; padding-bottom:2px;">○ 2021 — 2024</td></tr>
+<tr><td style="font-size:13px; padding-bottom:12px;">Senior Engineer @ [Company]</td></tr>
+<tr><td style="font-family:monospace; font-size:10px; color:#666; padding-bottom:2px;">○ 2019 — 2021</td></tr>
+<tr><td style="font-size:13px; padding-bottom:12px;">Founding Engineer @ [Startup]</td></tr>
+<tr><td style="font-family:monospace; font-size:10px; color:#666; padding-bottom:2px;">○ 2017 — 2019</td></tr>
+<tr><td style="font-size:13px; padding-bottom:12px;">Software Engineer @ [Corp]</td></tr>
+<tr><td style="font-family:monospace; font-size:10px; color:#666; padding-bottom:2px;">○ 2013 — 2017</td></tr>
+<tr><td style="font-size:13px;">CS Degree @ [University]</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td width="34%" valign="top">
+<!-- ASCII ARCHITECTURE -->
+<table width="100%" cellpadding="8" cellspacing="0" style="border:2px solid #000; background:#000;">
+<tr><td align="center" style="font-family:monospace; font-size:12px; font-weight:bold; color:#fff; letter-spacing:2px;">◈ SYSTEM ARCH</td></tr>
+<tr><td height="4"></td></tr>
+<tr><td align="center">
+<pre style="margin:0; font-family:monospace; font-size:9px; line-height:1.3; color:#fff;">
     ┌─────────────┐
     │   CLIENT    │
     └──────┬──────┘
            │ gRPC/mTLS
            ▼
     ┌─────────────┐     ┌─────────────┐
-    │   API GW    │────▶│   RATE LIM  │
+    │   API GW    │────▶│  RATE LIM   │
     └──────┬──────┘     └─────────────┘
            │
            ▼
@@ -951,69 +349,95 @@
                  │
         ┌────────┴────────┐
         ▼                 ▼
-┌─────────┐       ┌─────────┐
-│  WRITE  │       │  READ   │
-│  NODE   │◄─────▶│  REPLICA│
-│(PG/RAFT)│       │ (PG/RO) │
-└─────────┘       └─────────┘
-</div>
-</div>
-    <div class="brutal-card col-4" data-index="11">
-      <h3>Operating Principles</h3>
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 2;">
-        <div>01. CLARITY > CLEVERNESS</div>
-        <div>02. EXPLICIT > IMPLICIT</div>
-        <div>03. COMPOSITION > INHERITANCE</div>
-        <div>04. STABILITY > FEATURES</div>
-        <div>05. SILENCE > NOISE</div>
-        <div>06. DELETE > DOCUMENT</div>
-        <div>07. MEASURE > ASSUME</div>
-        <div>08. FAIL FAST > FAIL SILENT</div>
-      </div>
-    </div>
-
-    <!-- ROW 5: Tags + Contact -->
-    <div class="brutal-card inverted col-8" data-index="12">
-      <h3>Interest Topology</h3>
-      <div class="tag-cloud">
-        <span class="tag primary">DISTRIBUTED SYSTEMS</span>
-        <span class="tag">CONSENSUS ALGORITHMS</span>
-        <span class="tag">MEMORY SAFETY</span>
-        <span class="tag primary">ZERO-COPY</span>
-        <span class="tag">KERNEL PROGRAMMING</span>
-        <span class="tag">FORMAL METHODS</span>
-        <span class="tag">LINEAR TYPES</span>
-        <span class="tag primary">PERF ENGINEERING</span>
-        <span class="tag">LOCK-FREE</span>
-        <span class="tag">NUMA</span>
-        <span class="tag">IO_URING</span>
-        <span class="tag primary">EBPF</span>
-        <span class="tag">WASM</span>
-        <span class="tag">DECLARATIVE</span>
-        <span class="tag">IMMUTABLE</span>
-      </div>
-    </div>
-
-    <div class="brutal-card col-4" data-index="13">
-      <h3>Contact Vector</h3>
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 2.2;">
-        <div>EMAIL: <a href="mailto:your@email.com" style="color: #000; text-decoration: none; border-bottom: 1px solid #000;">your@email.com</a></div>
-        <div>WEB: <a href="https://your-website.com" style="color: #000; text-decoration: none; border-bottom: 1px solid #000;">your-website.com</a></div>
-        <div>LINKEDIN: <a href="https://linkedin.com/in/yourprofile" style="color: #000; text-decoration: none; border-bottom: 1px solid #000;">/in/yourprofile</a></div>
-        <div>GITHUB: <a href="https://github.com/YOUR_USERNAME" style="color: #000; text-decoration: none; border-bottom: 1px solid #000;">@YOUR_USERNAME</a></div>
-      </div>
-    </div>
-
-</div>
-  <!-- FOOTER -->
-<div class="brutal-footer">
-    <div>
-      "The best code is no code. The second best deletes other code."<br>
-      YOUR NAME · 2026 · ALL SYSTEMS NOMINAL
-    </div>
-    <div style="text-align: right;">
-      <img src="https://komarev.com/ghpvc/?username=YOUR_USERNAME&color=000000&style=flat-square&label=VIEWS" />
-    </div>
-  </div>
-</div>
+   ┌─────────┐       ┌─────────┐
+   │  WRITE  │       │  READ   │
+   │  NODE   │◄─────▶│ REPLICA │
+   │(PG/RAFT)│       │ (PG/RO) │
+   └─────────┘       └─────────┘
+</pre>
+</td></tr>
+</table>
+</td>
+<td width="33%" valign="top">
+<!-- PRINCIPLES -->
+<table width="100%" cellpadding="8" cellspacing="0" style="border:2px solid #000;">
+<tr><td align="center" style="border-bottom:2px solid #000; font-family:monospace; font-size:12px; font-weight:bold; letter-spacing:2px;">◈ PRINCIPLES</td></tr>
+<tr><td height="4"></td></tr>
+<tr><td style="font-family:monospace; font-size:11px; line-height:2.2;">
+01. CLARITY &gt; CLEVERNESS<br>
+02. EXPLICIT &gt; IMPLICIT<br>
+03. COMPOSITION &gt; INHERITANCE<br>
+04. STABILITY &gt; FEATURES<br>
+05. SILENCE &gt; NOISE<br>
+06. DELETE &gt; DOCUMENT<br>
+07. MEASURE &gt; ASSUME<br>
+08. FAIL FAST &gt; FAIL SILENT
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<!-- DIVIDER -->
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td height="2" bgcolor="#000"></td></tr></table>
+<br>
+<!-- TAGS + CONTACT -->
+<table width="100%">
+<tr>
+<td width="70%" valign="top">
+<table width="100%" cellpadding="8" cellspacing="0" style="border:2px solid #000; background:#000;">
+<tr><td align="center" style="font-family:monospace; font-size:12px; font-weight:bold; color:#fff; letter-spacing:2px;">◈ INTEREST TOPOLOGY</td></tr>
+<tr><td height="4"></td></tr>
+<tr><td>
+<table cellpadding="4" cellspacing="0" width="100%"><tr>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">DISTRIBUTED SYSTEMS</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">CONSENSUS</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">MEMORY SAFETY</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">ZERO-COPY</td>
+</tr><tr>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">KERNEL PROG</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">FORMAL METHODS</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">LINEAR TYPES</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">PERF ENG</td>
+</tr><tr>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">LOCK-FREE</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">NUMA</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">IO_URING</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">eBPF</td>
+</tr><tr>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">WASM</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">DECLARATIVE</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">IMMUTABLE</td>
+<td style="border:1px solid #fff; padding:4px 8px; font-family:monospace; font-size:10px; color:#fff;" align="center">RAFT</td>
+</tr></table>
+</td></tr>
+</table>
+</td>
+<td width="30%" valign="top">
+<table width="100%" cellpadding="8" cellspacing="0" style="border:2px solid #000;">
+<tr><td align="center" style="border-bottom:2px solid #000; font-family:monospace; font-size:12px; font-weight:bold; letter-spacing:2px;">◈ CONTACT</td></tr>
+<tr><td height="4"></td></tr>
+<tr><td style="font-family:monospace; font-size:11px; line-height:2;">
+<a href="mailto:your@email.com" style="color:#000; text-decoration:none; border-bottom:1px solid #000;">EMAIL</a><br>
+<a href="https://your-website.com" style="color:#000; text-decoration:none; border-bottom:1px solid #000;">WEBSITE</a><br>
+<a href="https://linkedin.com/in/yourprofile" style="color:#000; text-decoration:none; border-bottom:1px solid #000;">LINKEDIN</a><br>
+<a href="https://github.com/YOUR_USERNAME" style="color:#000; text-decoration:none; border-bottom:1px solid #000;">GITHUB</a>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<!-- FOOTER -->
+<table width="100%" cellpadding="12" cellspacing="0" style="border-top:3px solid #000;">
+<tr>
+<td style="font-family:monospace; font-size:10px; color:#666;">
+"The best code is no code. The second best deletes other code."<br>
+YOUR NAME · 2026 · ALL SYSTEMS NOMINAL
+</td>
+<td align="right">
+<img src="https://komarev.com/ghpvc/?username=YOUR_USERNAME&color=000000&style=flat-square&label=VIEWS" />
+</td>
+</tr>
+</table>
 </div>
