@@ -1,126 +1,143 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" role="img" aria-label="RV07 CODE" style="max-width: 1200px;">
+  <style>
+    .adaptive {
+      mix-blend-mode: difference;
+    }
+  </style>
   <defs>
-    <!-- RV07 从左实到右透明 -->
-    <linearGradient id="rv07Grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#000000" stop-opacity="1"/>
-      <stop offset="55%" stop-color="#000000" stop-opacity="0.85"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.42"/>
+      <stop offset="32%" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="58%" stop-color="#FFFFFF" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    
+    <radialGradient id="softContrast" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.24"/>
+      <stop offset="42%" stop-color="#FFFFFF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    
+    <linearGradient id="liquidMain" gradientUnits="userSpaceOnUse" x1="-120" y1="160" x2="1320" y2="260">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="10%" stop-color="#FFFFFF" stop-opacity="0.14"/>
+      <stop offset="22%" stop-color="#FFFFFF" stop-opacity="0.48"/>
+      <stop offset="36%" stop-color="#FFFFFF" stop-opacity="0.82"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.42"/>
+      <stop offset="64%" stop-color="#FFFFFF" stop-opacity="0.72"/>
+      <stop offset="78%" stop-color="#FFFFFF" stop-opacity="0.38"/>
+      <stop offset="92%" stop-color="#FFFFFF" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
-    <!-- CODE 从右实到左透明 -->
-    <linearGradient id="codeGrad" x1="100%" y1="0%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#000000" stop-opacity="1"/>
-      <stop offset="55%" stop-color="#000000" stop-opacity="0.85"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    
+    <linearGradient id="liquidWhite" gradientUnits="userSpaceOnUse" x1="-120" y1="120" x2="1320" y2="250">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="18%" stop-color="#FFFFFF" stop-opacity="0.16"/>
+      <stop offset="34%" stop-color="#FFFFFF" stop-opacity="0.68"/>
+      <stop offset="48%" stop-color="#FFFFFF" stop-opacity="0.24"/>
+      <stop offset="64%" stop-color="#FFFFFF" stop-opacity="0.56"/>
+      <stop offset="82%" stop-color="#FFFFFF" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
-    <!-- 几何装饰渐变 -->
-    <linearGradient id="geoGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#000000" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.03"/>
+    
+    <linearGradient id="liquidContrast" gradientUnits="userSpaceOnUse" x1="-120" y1="230" x2="1320" y2="270">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="16%" stop-color="#FFFFFF" stop-opacity="0.10"/>
+      <stop offset="34%" stop-color="#FFFFFF" stop-opacity="0.34"/>
+      <stop offset="52%" stop-color="#FFFFFF" stop-opacity="0.16"/>
+      <stop offset="68%" stop-color="#FFFFFF" stop-opacity="0.30"/>
+      <stop offset="86%" stop-color="#FFFFFF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="geoGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#000000" stop-opacity="0.10"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.02"/>
+    
+    <linearGradient id="brightShineA" gradientUnits="userSpaceOnUse" x1="80" y1="170" x2="720" y2="220">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="24%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="46%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="58%" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="76%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="geoGrad3" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#000000" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    <linearGradient id="brightShineB" gradientUnits="userSpaceOnUse" x1="480" y1="220" x2="1160" y2="260">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="28%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.82"/>
+      <stop offset="64%" stop-color="#FFFFFF" stop-opacity="0.42"/>
+      <stop offset="84%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#000000" stop-opacity="0.15"/>
-      <stop offset="50%" stop-color="#000000" stop-opacity="0.06"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    
+    <linearGradient id="rvText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="56%" stop-color="#FFFFFF" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="lineGrad2" x1="100%" y1="0%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#000000" stop-opacity="0.15"/>
-      <stop offset="50%" stop-color="#000000" stop-opacity="0.06"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    
+    <linearGradient id="codeText" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="56%" stop-color="#FFFFFF" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="dotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#000000" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.04"/>
-    </linearGradient>
-    <!-- 裁切用 -->
-    <clipPath id="triClip">
-      <polygon points="0,0 220,0 0,220"/>
-    </clipPath>
-    <clipPath id="triClip2">
-      <polygon points="1000,400 780,400 1000,180"/>
-    </clipPath>
   </defs>
-  <!-- ====== 左上区域几何装饰 ====== -->
-  <!-- 大三角背景 -->
-  <polygon points="0,0 320,0 0,320" fill="url(#geoGrad1)"/>
-  <!-- 内嵌三角线框 -->
-  <polygon points="0,0 240,0 0,240" fill="none" stroke="#000000" stroke-opacity="0.08" stroke-width="1.5"/>
-  <polygon points="0,0 160,0 0,160" fill="none" stroke="#000000" stroke-opacity="0.06" stroke-width="1"/>
-  <polygon points="0,0 80,0 0,80" fill="none" stroke="#000000" stroke-opacity="0.04" stroke-width="0.8"/>
-  <!-- 对角装饰线 -->
-  <line x1="0" y1="180" x2="180" y2="0" stroke="url(#lineGrad1)" stroke-width="1.2"/>
-  <line x1="0" y1="260" x2="260" y2="0" stroke="url(#lineGrad1)" stroke-width="0.8"/>
-  <!-- 小圆点装饰 -->
-  <circle cx="60" cy="170" r="3" fill="url(#dotGrad)"/>
-  <circle cx="100" cy="130" r="2.2" fill="url(#dotGrad)"/>
-  <circle cx="140" cy="90" r="1.8" fill="url(#dotGrad)"/>
-  <circle cx="30" cy="210" r="2.5" fill="url(#dotGrad)"/>
-  <!-- 菱形 -->
-  <polygon points="190,50 210,70 190,90 170,70" fill="none" stroke="#000000" stroke-opacity="0.09" stroke-width="1.2"/>
-  <!-- 小正方形旋转 -->
-  <rect x="230" y="15" width="18" height="18" rx="2" fill="none" stroke="#000000" stroke-opacity="0.07" stroke-width="1" transform="rotate(45 239 24)"/>
-  <!-- 水平细线 -->
-  <line x1="0" y1="155" x2="350" y2="155" stroke="#000000" stroke-opacity="0.04" stroke-width="0.6"/>
-  <!-- ====== 右下区域几何装饰 ====== -->
-  <!-- 大三角背景 -->
-  <polygon points="1000,400 680,400 1000,80" fill="url(#geoGrad2)"/>
-  <!-- 内嵌三角线框 -->
-  <polygon points="1000,400 760,400 1000,160" fill="none" stroke="#000000" stroke-opacity="0.08" stroke-width="1.5"/>
-  <polygon points="1000,400 840,400 1000,240" fill="none" stroke="#000000" stroke-opacity="0.06" stroke-width="1"/>
-  <polygon points="1000,400 920,400 1000,320" fill="none" stroke="#000000" stroke-opacity="0.04" stroke-width="0.8"/>
-  <!-- 对角装饰线 -->
-  <line x1="1000" y1="220" x2="820" y2="400" stroke="url(#lineGrad2)" stroke-width="1.2"/>
-  <line x1="1000" y1="140" x2="740" y2="400" stroke="url(#lineGrad2)" stroke-width="0.8"/>
-  <!-- 小圆点装饰 -->
-  <circle cx="940" cy="230" r="3" fill="url(#dotGrad)"/>
-  <circle cx="900" cy="270" r="2.2" fill="url(#dotGrad)"/>
-  <circle cx="860" cy="310" r="1.8" fill="url(#dotGrad)"/>
-  <circle cx="970" cy="190" r="2.5" fill="url(#dotGrad)"/>
-  <!-- 菱形 -->
-  <polygon points="810,350 830,330 810,310 790,330" fill="none" stroke="#000000" stroke-opacity="0.09" stroke-width="1.2"/>
-  <!-- 小正方形旋转 -->
-  <rect x="752" y="367" width="18" height="18" rx="2" fill="none" stroke="#000000" stroke-opacity="0.07" stroke-width="1" transform="rotate(45 761 376)"/>
-  <!-- 水平细线 -->
-  <line x1="1000" y1="245" x2="650" y2="245" stroke="#000000" stroke-opacity="0.04" stroke-width="0.6"/>
-  <!-- ====== 中部散落几何 ====== -->
-  <!-- 六边形 -->
-  <polygon points="500,195 515,185 530,195 530,210 515,220 500,210" fill="none" stroke="#000000" stroke-opacity="0.06" stroke-width="1"/>
-  <!-- 十字 -->
-  <line x1="480" y1="200" x2="480" y2="212" stroke="#000000" stroke-opacity="0.05" stroke-width="0.8"/>
-  <line x1="474" y1="206" x2="486" y2="206" stroke="#000000" stroke-opacity="0.05" stroke-width="0.8"/>
-  <!-- 散落小圆 -->
-  <circle cx="420" cy="180" r="1.5" fill="#000000" fill-opacity="0.05"/>
-  <circle cx="580" cy="220" r="1.5" fill="#000000" fill-opacity="0.05"/>
-  <circle cx="350" cy="250" r="1" fill="#000000" fill-opacity="0.04"/>
-  <circle cx="650" cy="150" r="1" fill="#000000" fill-opacity="0.04"/>
-  <!-- 虚线弧 -->
-  <path d="M 300 200 Q 500 120 700 200" fill="none" stroke="#000000" stroke-opacity="0.04" stroke-width="0.8" stroke-dasharray="6 8"/>
-  <path d="M 300 210 Q 500 290 700 210" fill="none" stroke="#000000" stroke-opacity="0.03" stroke-width="0.6" stroke-dasharray="4 6"/>
-  <!-- ====== 文字 ====== -->
-  <!-- RV07 左上 -->
-  <text x="30" y="130" 
-        font-family="'SF Pro Display', 'Inter', 'Helvetica Neue', Arial, sans-serif" 
-        font-size="130" 
-        font-weight="900" 
-        fill="url(#rv07Grad)" 
-        letter-spacing="4">
-    RV07
-  </text>
-  <!-- CODE 右下 -->
-  <text x="970" y="370" 
-        font-family="'SF Pro Display', 'Inter', 'Helvetica Neue', Arial, sans-serif" 
-        font-size="130" 
-        font-weight="900" 
-        fill="url(#codeGrad)" 
-        text-anchor="end" 
-        letter-spacing="4">
-    CODE
-  </text>
+  
+  
+  <g class="adaptive">
+    
+    <ellipse cx="600" cy="210" rx="520" ry="120" fill="url(#centerGlow)" opacity="0.95">
+      <animate attributeName="rx" values="480;560;500;520" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="ry" values="96;136;108;120" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.72;1;0.78;0.95" dur="6s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <ellipse cx="620" cy="245" rx="430" ry="76" fill="url(#softContrast)" opacity="0.58">
+      <animate attributeName="cx" values="590;640;610;620" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="rx" values="390;470;420;430" dur="9s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <path d="M-170 222 C38 146 210 160 362 210 C518 262 588 244 704 188 C834 126 936 168 1052 224 C1172 282 1274 218 1370 176" fill="none" stroke="url(#liquidWhite)" stroke-width="134" stroke-linecap="round" stroke-linejoin="round" opacity="0.36">
+      <animate attributeName="d" values="M-170 222 C38 146 210 160 362 210 C518 262 588 244 704 188 C834 126 936 168 1052 224 C1172 282 1274 218 1370 176;         M-170 212 C42 280 222 282 376 216 C526 152 598 144 714 204 C854 280 950 264 1060 198 C1182 126 1274 180 1370 228;         M-170 232 C46 126 224 160 366 226 C516 296 606 222 710 180 C844 126 940 146 1066 232 C1184 312 1280 242 1370 186;         M-170 222 C38 146 210 160 362 210 C518 262 588 244 704 188 C834 126 936 168 1052 224 C1172 282 1274 218 1370 176" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="118;154;128;134" dur="9s" repeatCount="indefinite"/>
+    </path>
+    
+    <path d="M-150 206 C18 142 168 146 320 198 C462 248 548 256 672 196 C808 130 902 162 1026 218 C1142 270 1236 218 1350 168 L1350 258 C1216 324 1092 312 982 264 C858 212 792 208 680 268 C548 340 430 306 294 250 C148 192 28 240 -150 302 Z" fill="url(#liquidMain)" opacity="0.94">
+      <animate attributeName="d" values="M-150 206 C18 142 168 146 320 198 C462 248 548 256 672 196 C808 130 902 162 1026 218 C1142 270 1236 218 1350 168 L1350 258 C1216 324 1092 312 982 264 C858 212 792 208 680 268 C548 340 430 306 294 250 C148 192 28 240 -150 302 Z;         M-150 224 C18 280 168 286 322 220 C460 158 552 134 678 198 C808 266 908 270 1022 204 C1140 134 1242 182 1350 222 L1350 304 C1196 244 1092 250 972 304 C844 360 760 302 650 242 C532 178 442 194 310 268 C152 356 20 286 -150 272 Z;         M-150 196 C28 118 172 160 312 208 C454 256 550 234 662 180 C792 116 904 146 1026 230 C1132 302 1234 250 1350 186 L1350 264 C1208 330 1106 322 980 274 C844 222 790 226 676 280 C546 342 430 316 296 258 C148 194 36 252 -150 312 Z;         M-150 206 C18 142 168 146 320 198 C462 248 548 256 672 196 C808 130 902 162 1026 218 C1142 270 1236 218 1350 168 L1350 258 C1216 324 1092 312 982 264 C858 212 792 208 680 268 C548 340 430 306 294 250 C148 192 28 240 -150 302 Z" dur="10.5s" repeatCount="indefinite"/>
+    </path>
+    
+    <path d="M-130 202 C52 154 192 168 342 214 C496 264 576 226 692 178 C826 122 922 166 1038 226 C1158 288 1256 214 1330 168 L1330 216 C1210 266 1120 280 1004 240 C872 194 806 190 696 236 C560 292 450 276 310 232 C166 186 46 220 -130 262 Z" fill="url(#liquidWhite)" opacity="0.9">
+      <animate attributeName="d" values="M-130 202 C52 154 192 168 342 214 C496 264 576 226 692 178 C826 122 922 166 1038 226 C1158 288 1256 214 1330 168 L1330 216 C1210 266 1120 280 1004 240 C872 194 806 190 696 236 C560 292 450 276 310 232 C166 186 46 220 -130 262 Z;         M-130 230 C52 280 210 270 352 206 C500 140 592 158 714 218 C850 286 942 254 1054 190 C1170 124 1262 176 1330 226 L1330 270 C1192 224 1104 228 984 276 C846 332 770 286 660 230 C530 166 436 194 316 254 C164 332 36 282 -130 264 Z;         M-130 202 C52 154 192 168 342 214 C496 264 576 226 692 178 C826 122 922 166 1038 226 C1158 288 1256 214 1330 168 L1330 216 C1210 266 1120 280 1004 240 C872 194 806 190 696 236 C560 292 450 276 310 232 C166 186 46 220 -130 262 Z" dur="9.6s" repeatCount="indefinite"/>
+    </path>
+    
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-170 226 C36 158 224 272 392 218 C552 166 650 288 820 222 C976 160 1132 246 1370 188" stroke="url(#liquidContrast)" stroke-width="56" opacity="0.78">
+        <animate attributeName="d" values="M-170 226 C36 158 224 272 392 218 C552 166 650 288 820 222 C976 160 1132 246 1370 188;           M-170 202 C38 270 230 150 402 222 C570 294 670 142 832 216 C988 286 1140 146 1370 226;           M-170 240 C44 126 238 288 398 232 C550 178 668 266 826 204 C980 146 1138 278 1370 178;           M-170 226 C36 158 224 272 392 218 C552 166 650 288 820 222 C976 160 1132 246 1370 188" dur="9.8s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-width" values="44;66;50;56" dur="7.8s" repeatCount="indefinite"/>
+      </path>
+      <path d="M-145 276 C72 212 218 232 356 272 C498 314 574 322 694 258 C826 188 922 216 1040 274 C1158 332 1256 270 1340 230" stroke="url(#liquidContrast)" stroke-width="26" opacity="0.48">
+        <animate attributeName="d" values="M-145 276 C72 212 218 232 356 272 C498 314 574 322 694 258 C826 188 922 216 1040 274 C1158 332 1256 270 1340 230;           M-145 242 C68 312 222 330 366 264 C504 200 590 184 710 244 C844 312 932 318 1050 258 C1164 202 1260 244 1340 284;           M-145 286 C78 190 228 218 360 286 C486 352 586 300 704 242 C836 178 930 232 1048 286 C1168 340 1262 288 1340 218;           M-145 276 C72 212 218 232 356 272 C498 314 574 322 694 258 C826 188 922 216 1040 274 C1158 332 1256 270 1340 230" dur="12.8s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M130 194 C236 160 332 208 438 190 C544 172 620 172 744 208" stroke="url(#brightShineA)" stroke-width="20" opacity="0.42">
+        <animate attributeName="d" values="M130 194 C236 160 332 208 438 190 C544 172 620 172 744 208;           M150 220 C268 250 354 190 456 202 C560 214 636 244 756 216;           M130 194 C236 160 332 208 438 190 C544 172 620 172 744 208" dur="7.2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.24;0.58;0.28;0.42" dur="4.8s" repeatCount="indefinite"/>
+      </path>
+      <path d="M170 188 C262 164 348 202 444 186 C548 168 622 178 714 202" stroke="url(#brightShineA)" stroke-width="6" opacity="0.9">
+        <animate attributeName="d" values="M170 188 C262 164 348 202 444 186 C548 168 622 178 714 202;           M178 216 C276 238 366 196 462 202 C564 208 636 230 724 210;           M170 188 C262 164 348 202 444 186 C548 168 622 178 714 202" dur="7.2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.58;1;0.62;0.9" dur="4.8s" repeatCount="indefinite"/>
+      </path>
+      <path d="M550 242 C672 208 764 238 868 232 C980 224 1068 190 1160 212" stroke="url(#brightShineB)" stroke-width="18" opacity="0.34">
+        <animate attributeName="d" values="M550 242 C672 208 764 238 868 232 C980 224 1068 190 1160 212;           M550 220 C668 256 764 202 880 218 C990 234 1068 250 1160 226;           M550 242 C672 208 764 238 868 232 C980 224 1068 190 1160 212" dur="8.2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.18;0.48;0.22;0.34" dur="5.4s" repeatCount="indefinite"/>
+      </path>
+      <path d="M586 236 C690 212 772 232 874 226 C986 220 1064 198 1134 212" stroke="url(#brightShineB)" stroke-width="5" opacity="0.82">
+        <animate attributeName="d" values="M586 236 C690 212 772 232 874 226 C986 220 1064 198 1134 212;           M580 222 C686 246 780 208 884 220 C990 232 1066 238 1138 224;           M586 236 C690 212 772 232 874 226 C986 220 1064 198 1134 212" dur="8.2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.48;0.94;0.52;0.82" dur="5.4s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    <text x="28" y="174" font-family="Inter, 'Arial Black', 'Segoe UI', Arial, sans-serif" font-size="198" font-weight="900" letter-spacing="8" fill="url(#rvText)">RV07</text>
+    <text x="1174" y="390" text-anchor="end" font-family="Inter, 'Arial Black', 'Segoe UI', Arial, sans-serif" font-size="198" font-weight="900" letter-spacing="8" fill="url(#codeText)">CODE</text>
+  </g>
 </svg>
