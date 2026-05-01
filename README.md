@@ -1,3 +1,3 @@
 <div align="center">
-  <img src="./assets/image.svg" width="100%" />
+  <img src="./assets/flow.svg" width="100%" />
 </div>
