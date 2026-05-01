@@ -1,143 +1,185 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" role="img" aria-label="RV07 CODE" style="max-width: 1200px;">
-  <style>
-    .adaptive {
-      mix-blend-mode: difference;
-    }
-  </style>
   <defs>
     
-    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.42"/>
-      <stop offset="32%" stop-color="#FFFFFF" stop-opacity="0.22"/>
-      <stop offset="58%" stop-color="#FFFFFF" stop-opacity="0.10"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-    </radialGradient>
-    
-    <radialGradient id="softContrast" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.24"/>
-      <stop offset="42%" stop-color="#FFFFFF" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-    </radialGradient>
-    
-    <linearGradient id="liquidMain" gradientUnits="userSpaceOnUse" x1="-120" y1="160" x2="1320" y2="260">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="10%" stop-color="#FFFFFF" stop-opacity="0.14"/>
-      <stop offset="22%" stop-color="#FFFFFF" stop-opacity="0.48"/>
-      <stop offset="36%" stop-color="#FFFFFF" stop-opacity="0.82"/>
-      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.42"/>
-      <stop offset="64%" stop-color="#FFFFFF" stop-opacity="0.72"/>
-      <stop offset="78%" stop-color="#FFFFFF" stop-opacity="0.38"/>
-      <stop offset="92%" stop-color="#FFFFFF" stop-opacity="0.14"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    
-    <linearGradient id="liquidWhite" gradientUnits="userSpaceOnUse" x1="-120" y1="120" x2="1320" y2="250">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="18%" stop-color="#FFFFFF" stop-opacity="0.16"/>
-      <stop offset="34%" stop-color="#FFFFFF" stop-opacity="0.68"/>
-      <stop offset="48%" stop-color="#FFFFFF" stop-opacity="0.24"/>
-      <stop offset="64%" stop-color="#FFFFFF" stop-opacity="0.56"/>
-      <stop offset="82%" stop-color="#FFFFFF" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    
-    <linearGradient id="liquidContrast" gradientUnits="userSpaceOnUse" x1="-120" y1="230" x2="1320" y2="270">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="16%" stop-color="#FFFFFF" stop-opacity="0.10"/>
-      <stop offset="34%" stop-color="#FFFFFF" stop-opacity="0.34"/>
-      <stop offset="52%" stop-color="#FFFFFF" stop-opacity="0.16"/>
-      <stop offset="68%" stop-color="#FFFFFF" stop-opacity="0.30"/>
-      <stop offset="86%" stop-color="#FFFFFF" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    
-    <linearGradient id="brightShineA" gradientUnits="userSpaceOnUse" x1="80" y1="170" x2="720" y2="220">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="24%" stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="46%" stop-color="#FFFFFF" stop-opacity="0.95"/>
-      <stop offset="58%" stop-color="#FFFFFF" stop-opacity="0.55"/>
-      <stop offset="76%" stop-color="#FFFFFF" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="brightShineB" gradientUnits="userSpaceOnUse" x1="480" y1="220" x2="1160" y2="260">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="28%" stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.82"/>
-      <stop offset="64%" stop-color="#FFFFFF" stop-opacity="0.42"/>
-      <stop offset="84%" stop-color="#FFFFFF" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    
     <linearGradient id="rvText" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
-      <stop offset="56%" stop-color="#FFFFFF" stop-opacity="0.96"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#000000" stop-opacity="1"/>
+      <stop offset="58%" stop-color="#000000" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
     </linearGradient>
     
     <linearGradient id="codeText" x1="100%" y1="0%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
-      <stop offset="56%" stop-color="#FFFFFF" stop-opacity="0.96"/>
+      <stop offset="0%" stop-color="#000000" stop-opacity="1"/>
+      <stop offset="58%" stop-color="#000000" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="chromeCore" gradientUnits="userSpaceOnUse" x1="-160" y1="150" x2="1360" y2="290">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="10%" stop-color="#000000" stop-opacity="0.18"/>
+      <stop offset="23%" stop-color="#F9FAFB" stop-opacity="0.34">
+        <animate attributeName="stop-opacity" values="0.22;0.46;0.28;0.34" dur="7s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="36%" stop-color="#020202" stop-opacity="0.88">
+        <animate attributeName="stop-opacity" values="0.72;0.94;0.78;0.88" dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="49%" stop-color="#111827" stop-opacity="0.74"/>
+      <stop offset="55%" stop-color="#FFFFFF" stop-opacity="0.78">
+        <animate attributeName="stop-opacity" values="0.50;0.96;0.62;0.78" dur="5.8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="63%" stop-color="#D1D5DB" stop-opacity="0.34"/>
+      <stop offset="76%" stop-color="#020202" stop-opacity="0.76">
+        <animate attributeName="stop-opacity" values="0.62;0.86;0.68;0.76" dur="8.4s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="90%" stop-color="#FFFFFF" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="outerLight" gradientUnits="userSpaceOnUse" x1="-180" y1="170" x2="1380" y2="260">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="18%" stop-color="#FFFFFF" stop-opacity="0.10"/>
+      <stop offset="34%" stop-color="#E5E7EB" stop-opacity="0.22"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.34">
+        <animate attributeName="stop-opacity" values="0.18;0.42;0.24;0.34" dur="6.6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="68%" stop-color="#D1D5DB" stop-opacity="0.18"/>
+      <stop offset="86%" stop-color="#FFFFFF" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="outerDark" gradientUnits="userSpaceOnUse" x1="-180" y1="190" x2="1380" y2="270">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="16%" stop-color="#000000" stop-opacity="0.10"/>
+      <stop offset="38%" stop-color="#000000" stop-opacity="0.28"/>
+      <stop offset="58%" stop-color="#111827" stop-opacity="0.18"/>
+      <stop offset="78%" stop-color="#000000" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="glassSkin" gradientUnits="userSpaceOnUse" x1="-130" y1="130" x2="1330" y2="285">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="18%" stop-color="#FFFFFF" stop-opacity="0.16"/>
+      <stop offset="34%" stop-color="#F9FAFB" stop-opacity="0.36"/>
+      <stop offset="48%" stop-color="#FFFFFF" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#000000" stop-opacity="0.10"/>
+      <stop offset="74%" stop-color="#FFFFFF" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="strandBlack" gradientUnits="userSpaceOnUse" x1="-160" y1="210" x2="1360" y2="250">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="18%" stop-color="#000000" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#000000" stop-opacity="0.54"/>
+      <stop offset="58%" stop-color="#111827" stop-opacity="0.32"/>
+      <stop offset="76%" stop-color="#000000" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="strandWhite" gradientUnits="userSpaceOnUse" x1="-160" y1="150" x2="1360" y2="240">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="18%" stop-color="#FFFFFF" stop-opacity="0.12"/>
+      <stop offset="38%" stop-color="#FFFFFF" stop-opacity="0.54"/>
+      <stop offset="54%" stop-color="#F9FAFB" stop-opacity="0.30"/>
+      <stop offset="74%" stop-color="#FFFFFF" stop-opacity="0.36"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="strandSilver" gradientUnits="userSpaceOnUse" x1="-160" y1="270" x2="1360" y2="220">
+      <stop offset="0%" stop-color="#9CA3AF" stop-opacity="0"/>
+      <stop offset="18%" stop-color="#D1D5DB" stop-opacity="0.16"/>
+      <stop offset="44%" stop-color="#FFFFFF" stop-opacity="0.40"/>
+      <stop offset="64%" stop-color="#6B7280" stop-opacity="0.22"/>
+      <stop offset="82%" stop-color="#F9FAFB" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#111827" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="hotLight" gradientUnits="userSpaceOnUse" x1="80" y1="180" x2="1160" y2="250">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="18%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="34%" stop-color="#FFFFFF" stop-opacity="0.20"/>
+      <stop offset="46%" stop-color="#FFFFFF" stop-opacity="0.88">
+        <animate attributeName="stop-opacity" values="0.54;1;0.68;0.88" dur="4.8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="54%" stop-color="#F9FAFB" stop-opacity="0.96">
+        <animate attributeName="stop-opacity" values="0.62;1;0.70;0.96" dur="5.4s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="64%" stop-color="#D1D5DB" stop-opacity="0.36"/>
+      <stop offset="82%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="sharpLight" gradientUnits="userSpaceOnUse" x1="120" y1="160" x2="1120" y2="250">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="28%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="48%" stop-color="#FFFFFF" stop-opacity="0.92"/>
+      <stop offset="57%" stop-color="#FFFFFF" stop-opacity="0.72"/>
+      <stop offset="76%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="darkGloss" gradientUnits="userSpaceOnUse" x1="20" y1="240" x2="1180" y2="230">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="22%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="46%" stop-color="#000000" stop-opacity="0.38"/>
+      <stop offset="62%" stop-color="#111827" stop-opacity="0.20"/>
+      <stop offset="84%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
     </linearGradient>
   </defs>
   
   
-  <g class="adaptive">
-    
-    <ellipse cx="600" cy="210" rx="520" ry="120" fill="url(#centerGlow)" opacity="0.95">
-      <animate attributeName="rx" values="480;560;500;520" dur="8s" repeatCount="indefinite"/>
-      <animate attributeName="ry" values="96;136;108;120" dur="8s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.72;1;0.78;0.95" dur="6s" repeatCount="indefinite"/>
-    </ellipse>
-    
-    <ellipse cx="620" cy="245" rx="430" ry="76" fill="url(#softContrast)" opacity="0.58">
-      <animate attributeName="cx" values="590;640;610;620" dur="9s" repeatCount="indefinite"/>
-      <animate attributeName="rx" values="390;470;420;430" dur="9s" repeatCount="indefinite"/>
-    </ellipse>
-    
-    <path d="M-170 222 C38 146 210 160 362 210 C518 262 588 244 704 188 C834 126 936 168 1052 224 C1172 282 1274 218 1370 176" fill="none" stroke="url(#liquidWhite)" stroke-width="134" stroke-linecap="round" stroke-linejoin="round" opacity="0.36">
-      <animate attributeName="d" values="M-170 222 C38 146 210 160 362 210 C518 262 588 244 704 188 C834 126 936 168 1052 224 C1172 282 1274 218 1370 176;         M-170 212 C42 280 222 282 376 216 C526 152 598 144 714 204 C854 280 950 264 1060 198 C1182 126 1274 180 1370 228;         M-170 232 C46 126 224 160 366 226 C516 296 606 222 710 180 C844 126 940 146 1066 232 C1184 312 1280 242 1370 186;         M-170 222 C38 146 210 160 362 210 C518 262 588 244 704 188 C834 126 936 168 1052 224 C1172 282 1274 218 1370 176" dur="12s" repeatCount="indefinite"/>
-      <animate attributeName="stroke-width" values="118;154;128;134" dur="9s" repeatCount="indefinite"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-180 224 C40 148 210 158 364 210 C516 262 586 248 698 194 C828 130 934 170 1048 224 C1168 284 1270 218 1380 176" stroke="url(#outerLight)" stroke-width="172" opacity="0.82">
+      <animate attributeName="d" values="M-180 224 C40 148 210 158 364 210 C516 262 586 248 698 194 C828 130 934 170 1048 224 C1168 284 1270 218 1380 176;         M-180 212 C42 282 220 282 374 216 C524 152 596 144 710 204 C852 280 948 264 1058 198 C1180 126 1272 180 1380 228;         M-180 232 C46 126 224 160 364 226 C514 296 604 222 708 180 C842 126 938 146 1064 232 C1182 312 1278 242 1380 186;         M-180 224 C40 148 210 158 364 210 C516 262 586 248 698 194 C828 130 934 170 1048 224 C1168 284 1270 218 1380 176" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="150;190;160;172" dur="8.8s" repeatCount="indefinite"/>
     </path>
-    
-    <path d="M-150 206 C18 142 168 146 320 198 C462 248 548 256 672 196 C808 130 902 162 1026 218 C1142 270 1236 218 1350 168 L1350 258 C1216 324 1092 312 982 264 C858 212 792 208 680 268 C548 340 430 306 294 250 C148 192 28 240 -150 302 Z" fill="url(#liquidMain)" opacity="0.94">
-      <animate attributeName="d" values="M-150 206 C18 142 168 146 320 198 C462 248 548 256 672 196 C808 130 902 162 1026 218 C1142 270 1236 218 1350 168 L1350 258 C1216 324 1092 312 982 264 C858 212 792 208 680 268 C548 340 430 306 294 250 C148 192 28 240 -150 302 Z;         M-150 224 C18 280 168 286 322 220 C460 158 552 134 678 198 C808 266 908 270 1022 204 C1140 134 1242 182 1350 222 L1350 304 C1196 244 1092 250 972 304 C844 360 760 302 650 242 C532 178 442 194 310 268 C152 356 20 286 -150 272 Z;         M-150 196 C28 118 172 160 312 208 C454 256 550 234 662 180 C792 116 904 146 1026 230 C1132 302 1234 250 1350 186 L1350 264 C1208 330 1106 322 980 274 C844 222 790 226 676 280 C546 342 430 316 296 258 C148 194 36 252 -150 312 Z;         M-150 206 C18 142 168 146 320 198 C462 248 548 256 672 196 C808 130 902 162 1026 218 C1142 270 1236 218 1350 168 L1350 258 C1216 324 1092 312 982 264 C858 212 792 208 680 268 C548 340 430 306 294 250 C148 192 28 240 -150 302 Z" dur="10.5s" repeatCount="indefinite"/>
+    <path d="M-170 248 C58 182 230 238 392 216 C548 194 630 156 748 202 C888 258 986 224 1110 194 C1216 168 1294 190 1368 214" stroke="url(#outerDark)" stroke-width="120" opacity="0.70">
+      <animate attributeName="d" values="M-170 248 C58 182 230 238 392 216 C548 194 630 156 748 202 C888 258 986 224 1110 194 C1216 168 1294 190 1368 214;         M-170 218 C66 286 246 178 404 226 C560 276 648 248 764 206 C902 158 992 252 1122 236 C1230 222 1300 170 1368 188;         M-170 248 C58 182 230 238 392 216 C548 194 630 156 748 202 C888 258 986 224 1110 194 C1216 168 1294 190 1368 214" dur="10.2s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="104;138;112;120" dur="7.6s" repeatCount="indefinite"/>
     </path>
-    
-    <path d="M-130 202 C52 154 192 168 342 214 C496 264 576 226 692 178 C826 122 922 166 1038 226 C1158 288 1256 214 1330 168 L1330 216 C1210 266 1120 280 1004 240 C872 194 806 190 696 236 C560 292 450 276 310 232 C166 186 46 220 -130 262 Z" fill="url(#liquidWhite)" opacity="0.9">
-      <animate attributeName="d" values="M-130 202 C52 154 192 168 342 214 C496 264 576 226 692 178 C826 122 922 166 1038 226 C1158 288 1256 214 1330 168 L1330 216 C1210 266 1120 280 1004 240 C872 194 806 190 696 236 C560 292 450 276 310 232 C166 186 46 220 -130 262 Z;         M-130 230 C52 280 210 270 352 206 C500 140 592 158 714 218 C850 286 942 254 1054 190 C1170 124 1262 176 1330 226 L1330 270 C1192 224 1104 228 984 276 C846 332 770 286 660 230 C530 166 436 194 316 254 C164 332 36 282 -130 264 Z;         M-130 202 C52 154 192 168 342 214 C496 264 576 226 692 178 C826 122 922 166 1038 226 C1158 288 1256 214 1330 168 L1330 216 C1210 266 1120 280 1004 240 C872 194 806 190 696 236 C560 292 450 276 310 232 C166 186 46 220 -130 262 Z" dur="9.6s" repeatCount="indefinite"/>
-    </path>
-    
-    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M-170 226 C36 158 224 272 392 218 C552 166 650 288 820 222 C976 160 1132 246 1370 188" stroke="url(#liquidContrast)" stroke-width="56" opacity="0.78">
-        <animate attributeName="d" values="M-170 226 C36 158 224 272 392 218 C552 166 650 288 820 222 C976 160 1132 246 1370 188;           M-170 202 C38 270 230 150 402 222 C570 294 670 142 832 216 C988 286 1140 146 1370 226;           M-170 240 C44 126 238 288 398 232 C550 178 668 266 826 204 C980 146 1138 278 1370 178;           M-170 226 C36 158 224 272 392 218 C552 166 650 288 820 222 C976 160 1132 246 1370 188" dur="9.8s" repeatCount="indefinite"/>
-        <animate attributeName="stroke-width" values="44;66;50;56" dur="7.8s" repeatCount="indefinite"/>
-      </path>
-      <path d="M-145 276 C72 212 218 232 356 272 C498 314 574 322 694 258 C826 188 922 216 1040 274 C1158 332 1256 270 1340 230" stroke="url(#liquidContrast)" stroke-width="26" opacity="0.48">
-        <animate attributeName="d" values="M-145 276 C72 212 218 232 356 272 C498 314 574 322 694 258 C826 188 922 216 1040 274 C1158 332 1256 270 1340 230;           M-145 242 C68 312 222 330 366 264 C504 200 590 184 710 244 C844 312 932 318 1050 258 C1164 202 1260 244 1340 284;           M-145 286 C78 190 228 218 360 286 C486 352 586 300 704 242 C836 178 930 232 1048 286 C1168 340 1262 288 1340 218;           M-145 276 C72 212 218 232 356 272 C498 314 574 322 694 258 C826 188 922 216 1040 274 C1158 332 1256 270 1340 230" dur="12.8s" repeatCount="indefinite"/>
-      </path>
-    </g>
-    
-    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M130 194 C236 160 332 208 438 190 C544 172 620 172 744 208" stroke="url(#brightShineA)" stroke-width="20" opacity="0.42">
-        <animate attributeName="d" values="M130 194 C236 160 332 208 438 190 C544 172 620 172 744 208;           M150 220 C268 250 354 190 456 202 C560 214 636 244 756 216;           M130 194 C236 160 332 208 438 190 C544 172 620 172 744 208" dur="7.2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.24;0.58;0.28;0.42" dur="4.8s" repeatCount="indefinite"/>
-      </path>
-      <path d="M170 188 C262 164 348 202 444 186 C548 168 622 178 714 202" stroke="url(#brightShineA)" stroke-width="6" opacity="0.9">
-        <animate attributeName="d" values="M170 188 C262 164 348 202 444 186 C548 168 622 178 714 202;           M178 216 C276 238 366 196 462 202 C564 208 636 230 724 210;           M170 188 C262 164 348 202 444 186 C548 168 622 178 714 202" dur="7.2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.58;1;0.62;0.9" dur="4.8s" repeatCount="indefinite"/>
-      </path>
-      <path d="M550 242 C672 208 764 238 868 232 C980 224 1068 190 1160 212" stroke="url(#brightShineB)" stroke-width="18" opacity="0.34">
-        <animate attributeName="d" values="M550 242 C672 208 764 238 868 232 C980 224 1068 190 1160 212;           M550 220 C668 256 764 202 880 218 C990 234 1068 250 1160 226;           M550 242 C672 208 764 238 868 232 C980 224 1068 190 1160 212" dur="8.2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.18;0.48;0.22;0.34" dur="5.4s" repeatCount="indefinite"/>
-      </path>
-      <path d="M586 236 C690 212 772 232 874 226 C986 220 1064 198 1134 212" stroke="url(#brightShineB)" stroke-width="5" opacity="0.82">
-        <animate attributeName="d" values="M586 236 C690 212 772 232 874 226 C986 220 1064 198 1134 212;           M580 222 C686 246 780 208 884 220 C990 232 1066 238 1138 224;           M586 236 C690 212 772 232 874 226 C986 220 1064 198 1134 212" dur="8.2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.48;0.94;0.52;0.82" dur="5.4s" repeatCount="indefinite"/>
-      </path>
-    </g>
-    
-    <text x="28" y="174" font-family="Inter, 'Arial Black', 'Segoe UI', Arial, sans-serif" font-size="198" font-weight="900" letter-spacing="8" fill="url(#rvText)">RV07</text>
-    <text x="1174" y="390" text-anchor="end" font-family="Inter, 'Arial Black', 'Segoe UI', Arial, sans-serif" font-size="198" font-weight="900" letter-spacing="8" fill="url(#codeText)">CODE</text>
   </g>
+  
+  <path d="M-150 208 C16 144 166 146 318 198 C462 248 548 256 670 196 C806 130 900 162 1024 218 C1140 270 1234 218 1350 168 L1350 256 C1216 322 1092 312 982 264 C858 212 792 208 680 266 C548 340 430 306 294 250 C148 192 28 240 -150 302 Z" fill="url(#chromeCore)" opacity="0.94">
+    <animate attributeName="d" values="M-150 208 C16 144 166 146 318 198 C462 248 548 256 670 196 C806 130 900 162 1024 218 C1140 270 1234 218 1350 168 L1350 256 C1216 322 1092 312 982 264 C858 212 792 208 680 266 C548 340 430 306 294 250 C148 192 28 240 -150 302 Z;       M-150 224 C18 280 168 286 322 220 C460 158 552 134 678 198 C808 266 908 270 1022 204 C1140 134 1242 182 1350 222 L1350 304 C1196 244 1092 250 972 304 C844 360 760 302 650 242 C532 178 442 194 310 268 C152 356 20 286 -150 272 Z;       M-150 196 C28 118 172 160 312 208 C454 256 550 234 662 180 C792 116 904 146 1026 230 C1132 302 1234 250 1350 186 L1350 264 C1208 330 1106 322 980 274 C844 222 790 226 676 280 C546 342 430 316 296 258 C148 194 36 252 -150 312 Z;       M-150 208 C16 144 166 146 318 198 C462 248 548 256 670 196 C806 130 900 162 1024 218 C1140 270 1234 218 1350 168 L1350 256 C1216 322 1092 312 982 264 C858 212 792 208 680 266 C548 340 430 306 294 250 C148 192 28 240 -150 302 Z" dur="10.5s" repeatCount="indefinite"/>
+  </path>
+  
+  <path d="M-128 190 C48 142 190 166 340 214 C496 264 574 226 690 178 C824 122 920 166 1036 226 C1156 288 1254 214 1330 168 L1330 204 C1210 250 1120 262 1004 232 C874 196 806 190 696 228 C560 276 450 266 310 224 C166 184 46 212 -128 252 Z" fill="url(#glassSkin)" opacity="0.98">
+    <animate attributeName="d" values="M-128 190 C48 142 190 166 340 214 C496 264 574 226 690 178 C824 122 920 166 1036 226 C1156 288 1254 214 1330 168 L1330 204 C1210 250 1120 262 1004 232 C874 196 806 190 696 228 C560 276 450 266 310 224 C166 184 46 212 -128 252 Z;       M-128 224 C52 280 210 270 352 206 C500 140 592 158 714 218 C850 286 942 254 1054 190 C1170 124 1262 176 1330 226 L1330 258 C1192 218 1104 222 984 268 C846 318 770 280 660 226 C530 166 436 194 316 248 C164 316 36 276 -128 260 Z;       M-128 190 C48 142 190 166 340 214 C496 264 574 226 690 178 C824 122 920 166 1036 226 C1156 288 1254 214 1330 168 L1330 204 C1210 250 1120 262 1004 232 C874 196 806 190 696 228 C560 276 450 266 310 224 C166 184 46 212 -128 252 Z" dur="9.2s" repeatCount="indefinite"/>
+  </path>
+  
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-150 182 C64 114 206 168 356 218 C510 270 582 226 690 172 C836 98 930 168 1044 234 C1160 300 1262 216 1350 150" stroke="url(#strandWhite)" stroke-width="42" opacity="0.90">
+      <animate attributeName="d" values="M-150 182 C64 114 206 168 356 218 C510 270 582 226 690 172 C836 98 930 168 1044 234 C1160 300 1262 216 1350 150;         M-150 236 C52 304 226 270 372 206 C518 142 604 150 716 218 C850 296 944 256 1056 190 C1172 120 1268 176 1350 232;         M-150 198 C70 130 224 178 360 236 C504 298 594 220 704 168 C834 106 940 148 1052 246 C1162 340 1276 238 1350 166;         M-150 182 C64 114 206 168 356 218 C510 270 582 226 690 172 C836 98 930 168 1044 234 C1160 300 1262 216 1350 150" dur="11.5s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="32;50;38;42" dur="8.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M-170 226 C36 158 224 272 392 218 C552 166 650 288 820 222 C976 160 1132 246 1370 188" stroke="url(#strandBlack)" stroke-width="64" opacity="0.82">
+      <animate attributeName="d" values="M-170 226 C36 158 224 272 392 218 C552 166 650 288 820 222 C976 160 1132 246 1370 188;         M-170 202 C38 270 230 150 402 222 C570 294 670 142 832 216 C988 286 1140 146 1370 226;         M-170 240 C44 126 238 288 398 232 C550 178 668 266 826 204 C980 146 1138 278 1370 178;         M-170 226 C36 158 224 272 392 218 C552 166 650 288 820 222 C976 160 1132 246 1370 188" dur="9.8s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="50;74;58;64" dur="7.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M-140 274 C72 212 218 232 356 272 C498 314 574 322 694 258 C826 188 922 216 1040 274 C1158 332 1256 270 1340 230" stroke="url(#strandSilver)" stroke-width="38" opacity="0.86">
+      <animate attributeName="d" values="M-140 274 C72 212 218 232 356 272 C498 314 574 322 694 258 C826 188 922 216 1040 274 C1158 332 1256 270 1340 230;         M-140 242 C68 312 222 330 366 264 C504 200 590 184 710 244 C844 312 932 318 1050 258 C1164 202 1260 244 1340 284;         M-140 286 C78 190 228 218 360 286 C486 352 586 300 704 242 C836 178 930 232 1048 286 C1168 340 1262 288 1340 218;         M-140 274 C72 212 218 232 356 272 C498 314 574 322 694 258 C826 188 922 216 1040 274 C1158 332 1256 270 1340 230" dur="12.8s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="28;46;34;38" dur="8.8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 210 C248 148 350 178 454 198 C564 218 652 184 760 194 C888 206 996 266 1134 206" stroke="url(#hotLight)" stroke-width="58" opacity="0.48">
+      <animate attributeName="d" values="M120 210 C248 148 350 178 454 198 C564 218 652 184 760 194 C888 206 996 266 1134 206;         M126 232 C260 270 362 210 468 202 C576 194 656 238 772 220 C900 200 1000 174 1138 232;         M120 210 C248 148 350 178 454 198 C564 218 652 184 760 194 C888 206 996 266 1134 206" dur="7.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.28;0.62;0.34;0.48" dur="4.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M156 196 C266 166 352 204 456 190 C558 176 646 186 746 206 C884 234 994 232 1118 202" stroke="url(#sharpLight)" stroke-width="9" opacity="0.82">
+      <animate attributeName="d" values="M156 196 C266 166 352 204 456 190 C558 176 646 186 746 206 C884 234 994 232 1118 202;         M166 222 C278 248 366 198 470 202 C570 206 660 232 762 218 C894 198 1004 202 1124 226;         M156 196 C266 166 352 204 456 190 C558 176 646 186 746 206 C884 234 994 232 1118 202" dur="7.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.48;1;0.56;0.82" dur="4.4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M250 246 C356 276 460 226 560 238 C672 252 760 222 860 230 C954 238 1036 262 1130 238" stroke="url(#hotLight)" stroke-width="28" opacity="0.30">
+      <animate attributeName="d" values="M250 246 C356 276 460 226 560 238 C672 252 760 222 860 230 C954 238 1036 262 1130 238;         M246 224 C356 194 462 252 572 236 C684 220 774 250 874 234 C972 218 1042 202 1134 226;         M250 246 C356 276 460 226 560 238 C672 252 760 222 860 230 C954 238 1036 262 1130 238" dur="8.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.16;0.42;0.20;0.30" dur="5.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M40 252 C140 286 224 220 330 232 C438 244 504 216 574 204" stroke="url(#darkGloss)" stroke-width="26" opacity="0.38">
+      <animate attributeName="d" values="M40 252 C140 286 224 220 330 232 C438 244 504 216 574 204;         M36 220 C142 186 228 266 338 240 C444 216 508 238 578 252;         M40 252 C140 286 224 220 330 232 C438 244 504 216 574 204" dur="6.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.18;0.48;0.22;0.38" dur="4.6s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <text x="28" y="174" font-family="Inter, 'Arial Black', 'Segoe UI', Arial, sans-serif" font-size="198" font-weight="900" letter-spacing="8" fill="url(#rvText)">RV07</text>
+  <text x="1174" y="390" text-anchor="end" font-family="Inter, 'Arial Black', 'Segoe UI', Arial, sans-serif" font-size="198" font-weight="900" letter-spacing="8" fill="url(#codeText)">CODE</text>
 </svg>
